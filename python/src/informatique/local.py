@@ -13,6 +13,6 @@ def connect_db():
     return conn
 
 
-client = OpenAI(api_key='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')
+client = OpenAI(api_key='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')
 
 

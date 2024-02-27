@@ -2,20 +2,20 @@ import os
 import requests
 import shutil
 #from Chat_GPT_mots import mots_clée
+from Chat_GPT_Video_Article import mots_clée_1 , mots_clée_2 ,mots_clée_3 ,mots_clée_4 , mots_clée_5
 
 # Remplacez 'VotreCleAPI' par votre clé API réelle de Pixabay
 API_KEY = '42564024-9a8c511341d7fd5ac07b886bd'
 URL = 'https://pixabay.com/api/videos/'
 
-mots_clée_T = 'informatique'
 
 
 # Paramètres de recherche pour les vidéos
 params = {
     'key': API_KEY,
-    'q': mots_clée_T,  # Thème de recherche
+    'q': mots_clée_1,  # Thème de recherche
     'lang': 'fr',  # Langue de recherche
-    'per_page': 5,  # Nombre de résultats par page
+    'per_page': 1,  # Nombre de résultats par page
     'video_type': 'all',  # Rechercher tous types de vidéos
     'orientation': 'all',  # Pas de restriction sur l'orientation
     'category': 'science',  # Catégorie spécifique
@@ -28,6 +28,8 @@ params = {
 }
 print(params)
 response = requests.get(URL, params=params)
+
+
 
 # Vérifier si la requête a réussi
 if response.status_code == 200:
