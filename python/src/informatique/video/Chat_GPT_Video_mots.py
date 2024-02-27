@@ -1,4 +1,4 @@
-from local import client
+from setting import client
 from Chat_GPT_Video_filtre import article_1 , article_2 ,article_3 ,article_4 , article_5
 
 

@@ -5,7 +5,6 @@ import shutil
 from Chat_GPT_Video_Article import mots_clée_1 , mots_clée_2 ,mots_clée_3 ,mots_clée_4 , mots_clée_5
 
 # Remplacez 'VotreCleAPI' par votre clé API réelle de Pixabay
-API_KEY = '42564024-9a8c511341d7fd5ac07b886bd'
 URL = 'https://pixabay.com/api/videos/'
 
 
