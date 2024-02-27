@@ -1,4 +1,4 @@
-from local import connect_db
+from setting import connect_db
 from datetime import datetime, timedelta
 
 # Établissement de la connexion
@@ -12,13 +12,15 @@ yesterday_str = yesterday_date.strftime('%Y-%m-%d')
 # Sélection et affichage des threads du jour d'avant
 cursor.execute("SELECT USER,Texte FROM Article_Thread WHERE Date_Thread LIKE %s", (yesterday_str + '%',))
 
-threads_resultat = cursor.fetchall()
+yesterday_date_threads_resultat = cursor.fetchall()
 
 # Conversion du résultat en string
-threads_resultat_str = str(threads_resultat)
+yesterday_date_threads_resultat = str(yesterday_date_threads_resultat)
 
 # Affichage du résultat sous forme de string
-print(threads_resultat_str)
 
-# Fermeture de la connexion
 conn.close()
+
+Source = "IT monitoring from "+ yesterday_str + " Tread = " + yesterday_date_threads_resultat 
+
+#print(Source)

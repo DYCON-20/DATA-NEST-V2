@@ -1,0 +1,30 @@
+# Ignorer un fichier spécifique
+secrets.txt
+setting.py
+# Ignorer tous les fichiers ayant une extension spécifique
+*.log
+# Ignorer tous les fichiers dans un dossier spécifique (et ses sous-dossiers)
+temp/
+
+# Ignorer un dossier spécifique et tout son contenu
+node_modules/
+
+# Ignorer tous les fichiers sauf ceux avec une extension spécifique (ex: garder tous les .c)
+# D'abord ignorer tout
+#*
+# Puis annuler l'ignorance pour les fichiers .c
+!*.c
+
+# Ignorer les fichiers de configuration système spécifiques à l'OS
+.DS_Store
+Thumbs.db
+
+# Ignorer les fichiers de build et les fichiers temporaires
+/build/
+*.tmp
+*.swp
+
+# Ignorer les fichiers de configuration d'éditeurs ou IDE spécifiques
+.vscode/
+.idea/
+*.sublime-workspace

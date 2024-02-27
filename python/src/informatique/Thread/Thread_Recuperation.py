@@ -8,6 +8,7 @@ from nested_lookup import nested_lookup
 from playwright.sync_api import sync_playwright
 import pandas as pd  
 
+
 # Définissez la fonction pour parser un fil
 def parse_thread(post: Dict) -> Dict:
     """Parse Twitter tweet JSON dataset for the specified fields"""
@@ -87,6 +88,8 @@ def scrape_thread(url: str) -> None:
         # Assurez-vous que result_tuple est une liste ou un tuple
         result_list = list(result_tuple)
         recuperationbdd([result_tuple])
+
+
 
 
 # Exemple d'utilisation :

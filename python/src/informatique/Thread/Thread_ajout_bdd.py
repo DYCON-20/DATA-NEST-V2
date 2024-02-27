@@ -1,9 +1,13 @@
+import sys
+from pathlib import Path
+sys.path.append(str(Path(__file__).parent.parent))
 import mysql.connector
 from datetime import datetime
 from urllib.parse import quote
 
+
 #local
-from local import connect_db
+from setting import connect_db
 
 
 def recuperationbdd(donnees_a_inserer):
@@ -73,10 +77,4 @@ def recuperationbdd(donnees_a_inserer):
             conn.close()
             print("Connexion à la base de données MySQL fermée.")
 
-# Exemple d'utilisation
-donnees_a_inserer = [
-    ('3288164974458941110_1591732793', 'lesnumeriques', "Si vous en avez marre des casques pour jouer à la PS5, Sony a pensé à vous avec les Pulse Explore. Attention, on a pas dit qu'ils étaient bien par contre.", '', 'https://scontent.cdninstagram.com/v/t66.30100-16/10000000_345849955019336_3429142815092431005_n.mp4?efg=e30&_nc_ht=scontent.cdninstagram.com&_nc_cat=108&_nc_ohc=YlTKlMsq-NcAX_1dEcr&edm=APs17CUBAAAA&ccb=7-5&oh=00_AfD0ROO77WwIMpEHQR2M298qRE7oILlLgHk_SaNyXnRq0g&oe=65B8A7A8&_nc_sid=10d13b', 1706199944),
-    # Ajoutez d'autres données ici si nécessaire
-]
 
-recuperationbdd(donnees_a_inserer)

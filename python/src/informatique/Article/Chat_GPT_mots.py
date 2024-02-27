@@ -1,4 +1,4 @@
-from local import client
+from setting import client
 from Chat_GPT_Article import result_article
 
 

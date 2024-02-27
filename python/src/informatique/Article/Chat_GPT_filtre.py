@@ -1,8 +1,11 @@
-from local import client
-from Thread.Thread_recup import threads_resultat_str
+import sys
+from pathlib import Path
+sys.path.append(str(Path(__file__).parent.parent))
+from setting import client
+from source import Source
 
 
-data = threads_resultat_str
+data = Source
 
 instruction = "Filtre et affiche seulement les articles correspondant à ces critères : - Lié à l’informatique et à la technologie - Pas une pub (un podcast, une vidéo) - Nouveauté ou événement - Affiche les données avec cette template : User Texte Pas de lien"
 
