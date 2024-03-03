@@ -10,7 +10,7 @@ yesterday_date = datetime.now() - timedelta(1)
 yesterday_str = yesterday_date.strftime('%Y-%m-%d')
 
 # Sélection et affichage des threads du jour d'avant
-cursor.execute("SELECT USER,Texte FROM Article_Thread WHERE Date_Thread LIKE %s", (yesterday_str + '%',))
+cursor.execute("SELECT User, Texte FROM Article_Thread WHERE Date_Thread LIKE %s", (yesterday_str + '%',))
 
 yesterday_date_threads_resultat = cursor.fetchall()
 

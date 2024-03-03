@@ -1,5 +1,5 @@
 # Importez les modules nécessaires
-from Thread_ajout_bdd import recuperationbdd
+from .Thread_ajout_bdd import recuperationbdd
 from typing import Dict
 import json
 import jmespath
