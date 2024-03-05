@@ -11,7 +11,10 @@ from datetime import datetime, timedelta
 from setting import TIKTOK_id
 
 
+from setting import Theme
 
+
+datetime_Monitoring = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
 
 def voice_videos():
 
@@ -93,11 +96,11 @@ def voice_videos():
 
     date_du_jour_avant = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
 
-    OUTPUT_DIR =  f"./python/data/veille_video/veille_du_{date_du_jour_avant}"
+    OUTPUT_DIR =  f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/audio"
 
     # Définissez vos variables ici
     session_id = TIKTOK_id
-    text_speaker = "en_us_stormtrooper"
+    text_speaker = "fr_002"
     filename = 'audio_article_1.mp3'
     req_text = f"{data1}"
 

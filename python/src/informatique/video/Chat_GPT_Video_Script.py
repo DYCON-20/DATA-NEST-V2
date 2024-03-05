@@ -6,6 +6,11 @@ from datetime import datetime, timedelta
 from setting import connect_db  # Supposons que cette fonction retourne une connexion à la base de données
 import os
 
+from setting import Theme
+
+
+datetime_Monitoring = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
+
 def creation_script_video():
 
   # Assuming setting.py contains the necessary database connection parameters
@@ -153,7 +158,7 @@ def creation_script_video():
   date_du_jour_avant = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
 
   # Emplacement du dossier à créer, incluant la date calculée
-  chemin_dossier = f"./python/data/veille_video/veille_du_{date_du_jour_avant}"
+  chemin_dossier = f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/subtitle"
 
   scripts = [script_article_1, script_article_2, script_article_3, script_article_4]
 

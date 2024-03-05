@@ -8,6 +8,11 @@ from pathlib import Path
 sys.path.append(str(Path(__file__).parent.parent))
 from setting import API_KEY, connect_db
 
+from setting import Theme
+
+
+datetime_Monitoring = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
+
 
 
 def recuperation_videos():
@@ -38,7 +43,7 @@ def recuperation_videos():
             if total_videos > 0:
                 for i in range(total_videos):
                     video_url = data['hits'][i]['videos']['medium']['url']
-                    dossier_destination = f"./python/data/veille_video/veille_du_{date_du_jour_avant}/"
+                    dossier_destination = f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/video/"
                     nom_fichier = f'video_article_{index}_p{i+1}.mp4'
                     file_path = os.path.join(dossier_destination, nom_fichier)
                     if not os.path.exists(dossier_destination):
