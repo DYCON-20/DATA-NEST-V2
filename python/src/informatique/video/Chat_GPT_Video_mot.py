@@ -3,25 +3,26 @@ from pathlib import Path
 sys.path.append(str(Path(__file__).parent.parent))
 from setting import client
 from datetime import datetime, timedelta
-from setting import connect_db  # Supposons que cette fonction retourne une connexion à la base de données
+from setting import connect_db  
 
 from source import Source
 
-# Assuming setting.py contains the necessary database connection parameters
 from setting import connect_db
 
 def création_mot_video():
+  print("création_mot_video")
+
 
   # Connect to the database
   conn = connect_db()
   c = conn.cursor()
+
   # Calcul de la date d'hier au format YYYY-MM-DD
   date_du_jour_avant = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
 
   # Exécution de la requête pour récupérer les données datées d'hier
   c.execute('SELECT Video_filtre1, Video_filtre2, Video_filtre3, Video_filtre4, Video_filtre5 FROM Video_filtre WHERE date = %s', (date_du_jour_avant,))
 
-  # Récupération du premier résultat (si disponible)
   resultat = c.fetchone()
 
   if resultat:
@@ -35,15 +36,13 @@ def création_mot_video():
       # Si aucun résultat n'est trouvé, vous pourriez vouloir initialiser vos variables ici
       data1 = data2 = data3 = data4 = data5 = None
 
-  # Assurez-vous de fermer la connexion à la base de données si vous avez terminé avec elle
   conn = connect_db()
   c = conn.cursor()
-  # Vous pouvez maintenant utiliser `data1`, `data2`, `data3`, `data4`, `data5` pour d'autres opérations
 
-  instruction = """crée 1 mot clée tres generique en anglais  liée a cette article """
+  instruction = """gives a single word which corresponds most to this article according to this corpus of words in English if nothing corresponds displays the most adaptable word (Computer, Server, Hard disk, Motherboard, Processor, Graphics card, Keyboard, Mouse, Monitor, Laptop, Operating system, database, web browser, mobile application, programming software, artificial intelligence, neural network, network, Internet, cloud computing, cybersecurity, cryptography, blockchain, data center, Wi-Fi, Ethernet , VPN, code, software development, application Programming interface, GitHub, Containerization, Virtualization, Agile, Scrum, Big Data, Machine Learning, Deep Learning, IoT (Internet of Things), Augmented Reality, Virtual Reality, Robotics, Drones, Hacking , Software bug, Benchmark, Overclocking, 3D modeling, 3D printing, E-sports, Video game"""
 
 
-  response = client.chat.completions.create(model="gpt-3.5-turbo", # Specify the model
+  response = client.chat.completions.create(model="gpt-3.5-turbo", 
   messages=[
         {"role": "system", "content": instruction },
         {"role": "user", "content": data1}
@@ -56,7 +55,7 @@ def création_mot_video():
 
   mots_clée_1 = str(response.choices[0].message.content)
 
-  response = client.chat.completions.create(model="gpt-3.5-turbo", # Specify the model
+  response = client.chat.completions.create(model="gpt-3.5-turbo", 
   messages=[
         {"role": "system", "content": instruction },
         {"role": "user", "content": data2}
@@ -70,7 +69,7 @@ def création_mot_video():
   mots_clée_2 = str(response.choices[0].message.content)
 
 
-  response = client.chat.completions.create(model="gpt-3.5-turbo", # Specify the model
+  response = client.chat.completions.create(model="gpt-3.5-turbo", 
   messages=[
         {"role": "system", "content": instruction },
         {"role": "user", "content": data3}
@@ -83,7 +82,7 @@ def création_mot_video():
 
   mots_clée_3 = str(response.choices[0].message.content)
 
-  response = client.chat.completions.create(model="gpt-3.5-turbo", # Specify the model
+  response = client.chat.completions.create(model="gpt-3.5-turbo", 
   messages=[
         {"role": "system", "content": instruction },
         {"role": "user", "content": data4}
@@ -96,7 +95,7 @@ def création_mot_video():
 
   mots_clée_4 = str(response.choices[0].message.content)
 
-  response = client.chat.completions.create(model="gpt-3.5-turbo", # Specify the model
+  response = client.chat.completions.create(model="gpt-3.5-turbo", 
   messages=[
         {"role": "system", "content": instruction },
         {"role": "user", "content": data5}
@@ -148,7 +147,7 @@ def création_mot_video():
 
   # Ferme la connexion à la base de données
   conn.close()
-
+  pass
 
 
 

@@ -1,81 +1,77 @@
-import os
 import sys
 from pathlib import Path
 from datetime import datetime, timedelta
 from moviepy.editor import VideoFileClip, concatenate_videoclips, AudioFileClip, concatenate_audioclips
-from moviepy.editor import VideoFileClip
-import moviepy.video.fx.all as vfx
-# Ajout du chemin du projet pour importer des modules spécifiques
+
 sys.path.append(str(Path(__file__).parent.parent))
 from setting import Theme
 
-
 datetime_Monitoring = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
+
+def ajuster_format_telephone(clip, resolution_cible=(1080, 1920)):
+    ratio_cible = resolution_cible[0] / resolution_cible[1]
+    ratio_clip = clip.size[0] / clip.size[1]
+
+    if ratio_clip > ratio_cible:
+        # Le clip est trop large, il faut le rogner horizontalement
+        nouvelle_largeur = int(clip.size[1] * ratio_cible)
+        clip_rogne = clip.crop(x_center=clip.size[0]/2, width=nouvelle_largeur)
+    else:
+        # Le clip est trop haut, il faut le rogner verticalement (si nécessaire)
+        nouvelle_hauteur = int(clip.size[0] / ratio_cible)
+        clip_rogne = clip.crop(y_center=clip.size[1]/2, height=nouvelle_hauteur)
+
+    # Redimensionnement pour s'assurer que la résolution correspond à la cible
+    clip_final = clip_rogne.resize(newsize=resolution_cible)
+    return clip_final
+
 def assamblage_rush():
-    # Génération de la date du jour précédent
-    date_du_jour_avant = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
-
-
-
-
-    # Paramètres de la vidéo cible ajustés pour format téléphone
+    print("Assamblage rush")
     target_fps = 24
     codec_video = 'libx264'
-    resolution = (720, 1280)  # Résolution ajustée pour le format portrait
+    resolution = (1080, 1920)
+
+    base_path = f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}"
+    video_intro_path = f"{base_path}/final_component/intro_finale.mp4"
+    video_outro_path = f"{base_path}/final_component/outro_finale.mp4"
+    base_pathv = f"{base_path}/final_component/"
+    base_patha = f"{base_path}/audio/"
+
+    # Traitement de l'intro et de l'outro
+    video_intro_clip = VideoFileClip(video_intro_path)
+    video_intro_ajuste = ajuster_format_telephone(video_intro_clip, resolution)
+    video_outro_clip = VideoFileClip(video_outro_path)
+    video_outro_ajuste = ajuster_format_telephone(video_outro_clip, resolution)
+
+    video_clips = []
+    audio_clips = [AudioFileClip(f"{base_patha}/intro.mp3")]
 
     for i in range(1, 6):
-        source_filename = f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/final_component/Acticle_{i}_finale.mp4"
-        destination_filename = f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/final_component/Acticle_{i}_finale_prepare.mp4"
+        source_filename = f"{base_pathv}/Acticle_{i}_finale.mp4"
+        destination_filename = f"{base_pathv}/Acticle_{i}_finale_prepare.mp4"
         
         clip = VideoFileClip(source_filename)
+        clip_ajuste = ajuster_format_telephone(clip, resolution)
+        clip_ajuste.write_videofile(destination_filename, codec=codec_video)
+        video_clips.append(VideoFileClip(destination_filename))  
 
-        # Calcul pour centrer et rogner l'image pour le format portrait
-        clip_cropped = clip.crop(x_center=clip.size[0]/2, y_center=clip.size[1]/2, width=min(clip.size[0], resolution[0]), height=min(clip.size[1], resolution[1]))
-        
-        # Ajustement de la résolution et des fps après rognage
-        clip_resized = clip_cropped.resize(newsize=resolution).set_fps(target_fps)
-        
-        clip_resized.write_videofile(destination_filename, codec=codec_video)
+        audio_clips.append(AudioFileClip(f"{base_patha}/audio_article_{i}.mp3"))
 
-    # Préparation des chemins pour les clips vidéo et audio
-    base_pathv = f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/final_component/"
-    base_patha = f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/audio/"
-    base_pathf = f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/final_component/"
+    audio_clips.append(AudioFileClip(f"{base_patha}/outro.mp3"))
 
-    video_clips = [f"Acticle_{i}_finale_prepare.mp4" for i in range(1, 6)]
-    audio_clips = [f"audio_article_{i}.mp3" for i in range(1, 6)]
-
-    # Chargement et fusion des clips vidéo
-    video_clips_obj = [VideoFileClip(base_pathv + clip) for clip in video_clips]
-    clip_final = concatenate_videoclips(video_clips_obj)
-    
-    # Chargement et fusion des clips audio
-    audio_clips_obj = [AudioFileClip(base_patha + clip) for clip in audio_clips]
-    clip_audio_final = concatenate_audioclips(audio_clips_obj)
-
-    # Association de l'audio avec le clip vidéo
+    clip_final = concatenate_videoclips([video_intro_ajuste] + video_clips + [video_outro_ajuste])
+    clip_audio_final = concatenate_audioclips(audio_clips)
     clip_final = clip_final.set_audio(clip_audio_final)
 
-    # Nom du fichier de sortie avec date et heure
-    now = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-    nom_fichier_sortie = f"{base_pathf}assembly.mp4"
+    nom_fichier_sortie_video = f"{base_pathv}/assembly.mp4"
+    clip_final.write_videofile(nom_fichier_sortie_video, codec=codec_video)
 
-    # Exportation du fichier final
-    clip_final.write_videofile(nom_fichier_sortie)
+    nom_fichier_sortie_audio = f"{base_patha}/Compilation_audio_finale.mp3"
+    clip_audio_final.write_audiofile(nom_fichier_sortie_audio)
 
-    # Fermeture des clips pour libérer la mémoire
-    for clip in video_clips_obj + audio_clips_obj:
+    video_intro_clip.close()
+    video_outro_clip.close()
+    for clip in video_clips + audio_clips:
         clip.close()
 
-
-    audio1 = AudioFileClip(f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/audio/audio_article_1.mp3")
-    audio2 = AudioFileClip(f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/audio/audio_article_2.mp3")
-    audio3 = AudioFileClip(f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/audio/audio_article_3.mp3")
-    audio4 = AudioFileClip(f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/audio//audio_article_4.mp3")
-    audio5 = AudioFileClip(f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/audio/audio_article_5.mp3")
-    # Fusion des clips audio dans l'ordre
-    clip_audio_final = concatenate_audioclips([audio1, audio2, audio3, audio4, audio5])
-
-    # Sauvegarde du clip audio final dans un fichier
-    nom_fichier_sortie = f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/audio/Compilation_audio_finale.mp3"
-    clip_audio_final.write_audiofile(nom_fichier_sortie)
+    pass

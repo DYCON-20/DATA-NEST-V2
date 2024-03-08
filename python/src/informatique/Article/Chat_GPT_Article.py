@@ -40,7 +40,7 @@ def generer_article_veille():
 
     instruction = """
 Bonjour je m’appelle dycon est tu es programme qui récupère des textes et tu dois les analyser et créer un résumé dans un article de veille informatique 
-
+it is very important that it does not exceed 1900 characters 
 Pour créer l’article suis cette template
 
 (Utilise Pas de lien)
@@ -70,7 +70,9 @@ Restez connectés pour plus d'informations demain!
         temperature=0,
         top_p=0,
         frequency_penalty=0,
-        presence_penalty=0.0
+        presence_penalty=0.0,
+        max_tokens=2000 # Limite de tokens pour la réponse
+
       )
 
     result_article = str(response.choices[0].message.content)

@@ -12,7 +12,7 @@ from moviepy.editor import VideoFileClip, AudioFileClip
 import requests
 from moviepy.editor import VideoFileClip, AudioFileClip
 from moviepy.editor import VideoFileClip, AudioFileClip, TextClip, CompositeVideoClip
-from setting import AssemblyAI  # Assurez-vous que ce module contient la configuration nécessaire pour utiliser l'API AssemblyAI
+from setting import AssemblyAI  
 
 from moviepy.editor import VideoFileClip, concatenate_videoclips, AudioFileClip, concatenate_audioclips
 from setting import AssemblyAI
@@ -26,6 +26,7 @@ datetime_Monitoring = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
 
 
 def crated_subtitle():
+    print("crated_subtitle")
 
 
 
@@ -71,5 +72,5 @@ def crated_subtitle():
     with open(f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/subtitle/transcription_fr.srt", "w") as f:
         f.write(srt)
 
-
+    pass
   

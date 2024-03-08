@@ -7,14 +7,13 @@ from datetime import datetime, timedelta
 from setting import connect_db
 conn = connect_db()
 from source import Source
-
-# Assuming setting.py contains the necessary database connection parameters
 from setting import connect_db
 
 
 
 
 def creation_filtre_video():
+    print("creation_filtre_video")
     data = Source
     conn = connect_db()
     c = conn.cursor()
@@ -35,7 +34,7 @@ def creation_filtre_video():
 
     ''' 
 
-    response = client.chat.completions.create(model="gpt-3.5-turbo", # Specify the model
+    response = client.chat.completions.create(model="gpt-3.5-turbo", 
     messages=[
         {"role": "system", "content": instruction },
         {"role": "user", "content": data}
@@ -48,19 +47,16 @@ def creation_filtre_video():
 
     result_filtre_video = str(response.choices[0].message.content)
 
-    # Split the response to get individual articles
-    delimiter = "\n\n"  # Update this based on the actual response format
+    delimiter = "\n\n"  
     articles = result_filtre_video.strip().split(delimiter)
 
     if len(articles) >= 5:
-        # Store articles
         article_1 = articles[0]
         article_2 = articles[1]
         article_3 = articles[2]
         article_4 = articles[3]
         article_5 = articles[4]
 
-        # Insert into database
         date_du_jour_avant = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
 
         c.execute('''
@@ -86,7 +82,6 @@ def creation_filtre_video():
     else:
         print("Not enough articles found. Found only:", len(articles))
 
-    # Close the database connection
     conn.close()
 
-# Make sure to call your function where appropriate
+    pass

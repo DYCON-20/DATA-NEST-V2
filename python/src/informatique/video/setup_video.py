@@ -13,6 +13,7 @@ from setting import Theme
 def setup():
 
     datetime_Monitoring = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
+    print("setup")
 
 
 
@@ -33,3 +34,4 @@ def setup():
     # Check if the directories were created successfully
     created_dirs = [os.path.isdir(os.path.join(base_path, dir_path)) for dir_path in nested_dirs]
     created_dirs
+    pass

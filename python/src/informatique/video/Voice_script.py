@@ -9,7 +9,11 @@ from playsound import playsound
 from datetime import datetime, timedelta
 
 from setting import TIKTOK_id
-
+from pydub import AudioSegment
+import requests
+import base64
+import os
+from playsound import playsound
 
 from setting import Theme
 
@@ -133,6 +137,12 @@ def voice_videos():
                 # Écriture du fichier audio
                 with open(filepath, "wb") as out:
                     out.write(base64.b64decode(response_data["data"]["v_str"]))
+
+                audio = AudioSegment.from_file(filepath)
+                silence = AudioSegment.silent(duration=500)  # 500 ms de silence
+                audio += silence
+                audio.export(filepath, format="mp3")
+
                 if play:
                     playsound(filepath)
                 print(f"Audio saved to {filepath}")
@@ -184,6 +194,10 @@ def voice_videos():
                 # Écriture du fichier audio
                 with open(filepath, "wb") as out:
                     out.write(base64.b64decode(response_data["data"]["v_str"]))
+                audio = AudioSegment.from_file(filepath)
+                silence = AudioSegment.silent(duration=500)  # 500 ms de silence
+                audio += silence
+                audio.export(filepath, format="mp3")                    
                 if play:
                     playsound(filepath)
                 print(f"Audio saved to {filepath}")
@@ -235,6 +249,10 @@ def voice_videos():
                 # Écriture du fichier audio
                 with open(filepath, "wb") as out:
                     out.write(base64.b64decode(response_data["data"]["v_str"]))
+                audio = AudioSegment.from_file(filepath)
+                silence = AudioSegment.silent(duration=500)  # 500 ms de silence
+                audio += silence
+                audio.export(filepath, format="mp3")                    
                 if play:
                     playsound(filepath)
                 print(f"Audio saved to {filepath}")
@@ -287,6 +305,10 @@ def voice_videos():
                 # Écriture du fichier audio
                 with open(filepath, "wb") as out:
                     out.write(base64.b64decode(response_data["data"]["v_str"]))
+                audio = AudioSegment.from_file(filepath)
+                silence = AudioSegment.silent(duration=500)  # 500 ms de silence
+                audio += silence
+                audio.export(filepath, format="mp3")                    
                 if play:
                     playsound(filepath)
                 print(f"Audio saved to {filepath}")
@@ -337,6 +359,10 @@ def voice_videos():
                 # Écriture du fichier audio
                 with open(filepath, "wb") as out:
                     out.write(base64.b64decode(response_data["data"]["v_str"]))
+                audio = AudioSegment.from_file(filepath)
+                silence = AudioSegment.silent(duration=500)  # 500 ms de silence
+                audio += silence
+                audio.export(filepath, format="mp3")                    
                 if play:
                     playsound(filepath)
                 print(f"Audio saved to {filepath}")
@@ -352,3 +378,115 @@ def voice_videos():
     except Exception as e:
         print(e)
 
+
+ # Définissez vos variables ici
+    session_id = "0741b49e02bc59213d450c65e4430382"
+    text_speaker = "fr_002"
+    filename = 'intro.mp3'
+    req_text = " Bonjour a tous bienvenue sur cette veile informatique 5 nouvelle en 1 minute "
+
+    play = False
+
+    def make_request(session_id, text_speaker, req_text, api_domain):
+        headers = {'User-Agent': USER_AGENT, 'Cookie': f'sessionid={session_id}'}
+        params = {
+            'text_speaker': text_speaker,
+            'req_text': req_text, 
+            'speaker_map_type': 0,
+            'aid': 1233
+        }
+        response = requests.post(f"{api_domain}{API_PATH}", headers=headers, params=params)
+        response.raise_for_status()
+        return response.json()
+
+    def tts(session_id, text_speaker, req_text, filename, play):
+        if not os.path.exists(OUTPUT_DIR):
+            os.makedirs(OUTPUT_DIR)
+        
+        filepath = os.path.join(OUTPUT_DIR, filename)
+        
+        for api_domain in API_DOMAINS:
+            try:
+                response_data = make_request(session_id, text_speaker, req_text, api_domain)
+                # Vérifiez si la réponse contient le message d'erreur attendu
+                if response_data.get("message") == "Couldn't load speech. Try again.":
+                    continue  # Essayer avec le domaine suivant
+                # Écriture du fichier audio
+                with open(filepath, "wb") as out:
+                    out.write(base64.b64decode(response_data["data"]["v_str"]))
+                audio = AudioSegment.from_file(filepath)
+                silence = AudioSegment.silent(duration=500)  # 500 ms de silence
+                audio += silence
+                audio.export(filepath, format="mp3")                    
+                if play:
+                    playsound(filepath)
+                print(f"Audio saved to {filepath}")
+                return  # Succès, fin de la fonction
+            except Exception as e:
+                print(f"Failed to make a request to {api_domain}. Error: {e}")
+        
+        raise Exception("Failed to make a request to all domains.")
+
+    # Exécution
+    try:
+        tts(session_id, text_speaker, req_text, filename, play)
+    except Exception as e:
+        print(e)
+
+
+# Définissez vos variables ici
+    session_id = "0741b49e02bc59213d450c65e4430382"
+    text_speaker = "fr_002"
+    filename = 'outro.mp3'
+    req_text = " C'est la fin rendez vous demain pour une nouvelle veille "
+
+    play = False
+
+    def make_request(session_id, text_speaker, req_text, api_domain):
+        headers = {'User-Agent': USER_AGENT, 'Cookie': f'sessionid={session_id}'}
+        params = {
+            'text_speaker': text_speaker,
+            'req_text': req_text, 
+            'speaker_map_type': 0,
+            'aid': 1233
+        }
+        response = requests.post(f"{api_domain}{API_PATH}", headers=headers, params=params)
+        response.raise_for_status()
+        return response.json()
+
+    def tts(session_id, text_speaker, req_text, filename, play):
+        if not os.path.exists(OUTPUT_DIR):
+            os.makedirs(OUTPUT_DIR)
+        
+        filepath = os.path.join(OUTPUT_DIR, filename)
+        
+        for api_domain in API_DOMAINS:
+            try:
+                response_data = make_request(session_id, text_speaker, req_text, api_domain)
+                # Vérifiez si la réponse contient le message d'erreur attendu
+                if response_data.get("message") == "Couldn't load speech. Try again.":
+                    continue  # Essayer avec le domaine suivant
+                # Écriture du fichier audio
+                with open(filepath, "wb") as out:
+                    out.write(base64.b64decode(response_data["data"]["v_str"]))
+                audio = AudioSegment.from_file(filepath)
+                silence = AudioSegment.silent(duration=500)  # 500 ms de silence
+                audio += silence
+                audio.export(filepath, format="mp3")                    
+                if play:
+                    playsound(filepath)
+                print(f"Audio saved to {filepath}")
+                return  # Succès, fin de la fonction
+            except Exception as e:
+                print(f"Failed to make a request to {api_domain}. Error: {e}")
+        
+        raise Exception("Failed to make a request to all domains.")
+
+    # Exécution
+    try:
+        tts(session_id, text_speaker, req_text, filename, play)
+    except Exception as e:
+        print(e)
+
+
+    pass

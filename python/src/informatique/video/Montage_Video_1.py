@@ -1,5 +1,3 @@
-#rejouter fonction nom+date
-#rajouter supresion rush 
 import os
 import pysrt
 import sys
@@ -12,7 +10,10 @@ from moviepy.editor import VideoFileClip, AudioFileClip
 import requests
 from moviepy.editor import VideoFileClip, AudioFileClip
 from moviepy.editor import VideoFileClip, AudioFileClip, TextClip, CompositeVideoClip
-from setting import AssemblyAI  # Assurez-vous que ce module contient la configuration nécessaire pour utiliser l'API AssemblyAI
+from setting import AssemblyAI 
+import os
+import random
+from moviepy.editor import VideoFileClip, AudioFileClip
 
 from moviepy.editor import VideoFileClip, concatenate_videoclips, AudioFileClip, concatenate_audioclips
 from setting import AssemblyAI
@@ -21,9 +22,16 @@ import assemblyai as aai
 from setting import Theme
 
 
+import os
+import random
+from moviepy.editor import VideoFileClip, AudioFileClip
+
+
 datetime_Monitoring = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
 
 def ajustement_rush():
+    print("ajustement_rush")
+
     datetime_Monitoring = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
 
     nombre_aleatoire_entier = random.randint(1, 2)
@@ -109,6 +117,10 @@ def ajustement_rush():
     # Sauvegarde du clip vidéo ajusté
     clip_video_ajuste.write_videofile(f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/final_component/Acticle_3_finale.mp4")
 
+
+
+
+
     chemin_video = f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/video/video_article_4_p{nombre_aleatoire_entier}.mp4"
     chemin_audio = f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/audio/audio_article_4.mp3"
 
@@ -158,3 +170,103 @@ def ajustement_rush():
 
     # Sauvegarde du clip vidéo ajusté
     clip_video_ajuste.write_videofile(f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/final_component/Acticle_5_finale.mp4")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    # Configuration initiale
+    chemin_repertoire = "./python/data/Ressource/"
+    chemin_audio = f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/audio/intro.mp3"
+
+    # Sélection d'une vidéo aléatoire
+    fichiers = os.listdir(chemin_repertoire)
+    extensions_videos = ('.mp4', '.avi', '.mov', '.mkv')
+    videos = [fichier for fichier in fichiers if fichier.endswith(extensions_videos)]
+    video_aleatoire = random.choice(videos) if videos else None
+
+    if video_aleatoire:
+        chemin_video = os.path.join(chemin_repertoire, video_aleatoire)
+        print(f"Vidéo sélectionnée aléatoirement : {chemin_video}")
+        
+        # Chargement des clips
+        clip_video = VideoFileClip(chemin_video)
+        clip_audio = AudioFileClip(chemin_audio)
+        
+        # Obtention des durées
+        duree_video = clip_video.duration
+        duree_audio = clip_audio.duration
+        
+        # Ajustement de la vidéo
+        if duree_video >= duree_audio:
+            debut_aleatoire = random.uniform(0, duree_video - duree_audio)
+            clip_video_ajuste = clip_video.subclip(debut_aleatoire, debut_aleatoire + duree_audio)
+        else:
+            # Optionnel : boucler la vidéo si plus courte que l'audio, puis couper
+            clip_video_boucle = clip_video.loop(duration=duree_audio)
+            debut_aleatoire = random.uniform(0, clip_video_boucle.duration - duree_audio)
+            clip_video_ajuste = clip_video_boucle.subclip(debut_aleatoire, debut_aleatoire + duree_audio)
+        
+        # Sauvegarde du clip vidéo ajusté
+        chemin_sortie = f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/final_component/intro_finale.mp4"
+        clip_video_ajuste.write_videofile(chemin_sortie)
+    else:
+        print("Aucune vidéo trouvée dans le répertoire spécifié.")
+
+
+
+
+
+    # Configuration initiale
+    chemin_repertoire = "./python/data/Ressource/"
+    chemin_audio = f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/audio/outro.mp3"
+
+    # Sélection d'une vidéo aléatoire
+    fichiers = os.listdir(chemin_repertoire)
+    extensions_videos = ('.mp4', '.avi', '.mov', '.mkv')
+    videos = [fichier for fichier in fichiers if fichier.endswith(extensions_videos)]
+    video_aleatoire = random.choice(videos) if videos else None
+
+    if video_aleatoire:
+        chemin_video = os.path.join(chemin_repertoire, video_aleatoire)
+        print(f"Vidéo sélectionnée aléatoirement : {chemin_video}")
+        
+        # Chargement des clips
+        clip_video = VideoFileClip(chemin_video)
+        clip_audio = AudioFileClip(chemin_audio)
+        
+        # Obtention des durées
+        duree_video = clip_video.duration
+        duree_audio = clip_audio.duration
+        
+        # Ajustement de la vidéo
+        if duree_video >= duree_audio:
+            debut_aleatoire = random.uniform(0, duree_video - duree_audio)
+            clip_video_ajuste = clip_video.subclip(debut_aleatoire, debut_aleatoire + duree_audio)
+        else:
+            # Optionnel : boucler la vidéo si plus courte que l'audio, puis couper
+            clip_video_boucle = clip_video.loop(duration=duree_audio)
+            debut_aleatoire = random.uniform(0, clip_video_boucle.duration - duree_audio)
+            clip_video_ajuste = clip_video_boucle.subclip(debut_aleatoire, debut_aleatoire + duree_audio)
+        
+        # Sauvegarde du clip vidéo ajusté
+        chemin_sortie =f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/final_component/outro_finale.mp4"
+        clip_video_ajuste.write_videofile(chemin_sortie)
+    else:
+        print("Aucune vidéo trouvée dans le répertoire spécifié.")
+    pass
+
+
+
+
+
