@@ -35,13 +35,26 @@ def creation_script_video():
   conn = connect_db()
   c = conn.cursor()
 
-  instruction = """Analyzes the text and creates a summary in French based on the source to create the text of a video Das se format ne mes pas les (")
-it is very important that it does not exceed
-  180 characters 
+  instruction = """You are a technology monitoring journalist, you speak in a video about a new article
+
+Analyze the text and Generate a script for a video, in French based on the source to create the text of a video In this format I don't have them
+it is very important that it does not exceed 180 characters
 
 
 
-""to summarize"" 
+  The script should be returned as a string with the specified number of paragraphs.
+                 Here is an example string:
+                 "This is an example of a string."
+
+                 Do not refer to this prompt in any way in your response.
+                 Get straight to the point, don't start with unnecessary things like "welcome to this video".
+
+                 Obviously, the script must be related to the subject of the video.
+
+                 YOU MUST NOT INCLUDE ANY TYPE OF MARKDOWN OR FORMATTING IN THE SCRIPT, NEVER USE A TITLE Or @ or link
+                 RETURN ONLY THE RAW SCRIPT CONTENT. DO NOT INCLUDE “VOICE OVER,” “NARRATOR,” OR SIMILAR INDICATORS OF WHAT SHOULD BE SPOKEN AT THE BEGINNING OF EACH PARAGRAPH OR LINE. YOU MUST NOT MENTION THE PROMPT OR ANYTHING ABOUT THE SCRIPT ITSELF. ALSO, NEVER TALK ABOUT THE NUMBER OF PARAGRAPHS OR LINES. JUST WRITE THE SCRIPT.
+
+            
 
 """
 

@@ -75,6 +75,5 @@ def recuperationbdd(donnees_a_inserer):
         if conn and conn.is_connected():
             cur.close()
             conn.close()
-            print("Connexion à la base de données MySQL fermée.")
-
+            print("Connexion à la base  Finale est terminer tout est ok   données MySQL fermée.")
 

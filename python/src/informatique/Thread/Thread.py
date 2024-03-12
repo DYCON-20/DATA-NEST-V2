@@ -16,4 +16,4 @@ def recuperation():
     return resultat_afficher
 
 # Appeler la fonction afficher() et imprimer les résultats
-resultat_afficher = recuperation()
+#resultat_afficher = recuperation()

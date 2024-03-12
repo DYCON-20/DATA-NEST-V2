@@ -31,6 +31,56 @@ datetime_Monitoring = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
 
 def ajustement_rush():
     print("ajustement_rush")
+    datetime_Monitoring = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
+
+    # Construire le chemin vers le répertoire
+    directory_path = f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/video/"
+
+    # Initialiser la variable pour compter les fichiers
+    nombre_de_fichiers1 = 0
+
+    # Vérifier si le répertoire existe pour éviter une erreur
+    if os.path.exists(directory_path):
+        for filename in os.listdir(directory_path):
+            if filename.startswith("video_article_1_p"):
+                nombre_de_fichiers1 += 1
+
+        # Initialiser la variable pour compter les fichiers
+    nombre_de_fichiers2 = 0
+
+    # Vérifier si le répertoire existe pour éviter une erreur
+    if os.path.exists(directory_path):
+        for filename in os.listdir(directory_path):
+            if filename.startswith("video_article_2_p"):
+                nombre_de_fichiers2 += 1
+    
+        # Initialiser la variable pour compter les fichiers
+    nombre_de_fichiers3 = 0
+
+    # Vérifier si le répertoire existe pour éviter une erreur
+    if os.path.exists(directory_path):
+        for filename in os.listdir(directory_path):
+            if filename.startswith("video_article_3_p"):
+                nombre_de_fichiers3 += 1
+    
+        # Initialiser la variable pour compter les fichiers
+    nombre_de_fichiers4 = 0
+
+    # Vérifier si le répertoire existe pour éviter une erreur
+    if os.path.exists(directory_path):
+        for filename in os.listdir(directory_path):
+            if filename.startswith("video_article_4_p"):
+                nombre_de_fichiers4 += 1
+    
+        # Initialiser la variable pour compter les fichiers
+    nombre_de_fichiers5 = 0
+
+    # Vérifier si le répertoire existe pour éviter une erreur
+    if os.path.exists(directory_path):
+        for filename in os.listdir(directory_path):
+            if filename.startswith("video_article_5_p"):
+                nombre_de_fichiers5 += 1
+
 
     datetime_Monitoring = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
 
@@ -39,7 +89,7 @@ def ajustement_rush():
 
     date_du_jour_avant = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
 
-    chemin_video = f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/video/video_article_1_p{nombre_aleatoire_entier}.mp4"
+    chemin_video = f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/video/video_article_1_p{nombre_de_fichiers1}.mp4"
     chemin_audio = f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/audio/audio_article_1.mp3"
 
     # Chargement des clips
@@ -66,7 +116,7 @@ def ajustement_rush():
 
 
 
-    chemin_video = f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/video/video_article_2_p{nombre_aleatoire_entier}.mp4"
+    chemin_video = f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/video/video_article_2_p{nombre_de_fichiers2}.mp4"
     chemin_audio = f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/audio/audio_article_2.mp3"
 
     # Chargement des clips
@@ -92,7 +142,7 @@ def ajustement_rush():
     clip_video_ajuste.write_videofile(f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/final_component/Acticle_2_finale.mp4")
 
 
-    chemin_video = f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/video/video_article_3_p{nombre_aleatoire_entier}.mp4"
+    chemin_video = f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/video/video_article_3_p{nombre_de_fichiers3}.mp4"
     chemin_audio = f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/audio/audio_article_3.mp3"
 
     # Chargement des clips
@@ -121,7 +171,7 @@ def ajustement_rush():
 
 
 
-    chemin_video = f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/video/video_article_4_p{nombre_aleatoire_entier}.mp4"
+    chemin_video = f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/video/video_article_4_p{nombre_de_fichiers4}.mp4"
     chemin_audio = f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/audio/audio_article_4.mp3"
 
     # Chargement des clips
@@ -146,7 +196,7 @@ def ajustement_rush():
     # Sauvegarde du clip vidéo ajusté
     clip_video_ajuste.write_videofile(f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/final_component/Acticle_4_finale.mp4")
 
-    chemin_video = f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/video/video_article_5_p{nombre_aleatoire_entier}.mp4"
+    chemin_video = f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/video/video_article_5_p{nombre_de_fichiers5}.mp4"
     chemin_audio = f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/audio/audio_article_5.mp3"
 
     # Chargement des clips

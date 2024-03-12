@@ -102,6 +102,26 @@ def voice_videos():
 
     OUTPUT_DIR =  f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/audio"
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     # Définissez vos variables ici
     session_id = TIKTOK_id
     text_speaker = "fr_002"
@@ -159,6 +179,38 @@ def voice_videos():
         print(e)
 
         
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     # Définissez vos variables ici
     session_id = "0741b49e02bc59213d450c65e4430382"
     text_speaker = "fr_002"
@@ -212,6 +264,40 @@ def voice_videos():
         tts(session_id, text_speaker, req_text, filename, play)
     except Exception as e:
         print(e)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     # Définissez vos variables ici
@@ -270,6 +356,33 @@ def voice_videos():
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     # Définissez vos variables ici
     session_id = "0741b49e02bc59213d450c65e4430382"
     text_speaker = "fr_002"
@@ -324,6 +437,27 @@ def voice_videos():
     except Exception as e:
         print(e)
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     # Définissez vos variables ici
     session_id = "0741b49e02bc59213d450c65e4430382"
     text_speaker = "fr_002"
@@ -377,6 +511,83 @@ def voice_videos():
         tts(session_id, text_speaker, req_text, filename, play)
     except Exception as e:
         print(e)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
  # Définissez vos variables ici
