@@ -89,6 +89,9 @@ def ajustement_rush():
 
     date_du_jour_avant = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
 
+
+
+
     chemin_video = f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/video/video_article_1_p{nombre_de_fichiers1}.mp4"
     chemin_audio = f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/audio/audio_article_1.mp3"
 
@@ -105,14 +108,28 @@ def ajustement_rush():
         # Coupe le clip vidéo si la vidéo est plus longue que l'audio
         clip_video_ajuste = clip_video.subclip(0, duree_audio)
     elif duree_video < duree_audio:
-        # Boucle la vidéo si la vidéo est plus courte que l'audio (optionnel, selon votre besoin)
-        clip_video_ajuste = clip_video.loop(duration=duree_audio)
+        # Boucle la vidéo si la vidéo est plus courte que l'audio
+        # Assurez-vous de ne pas dépasser la durée de l'audio lors du bouclage
+        repetition = duree_audio // duree_video  # Nombre entier de répétitions
+        reste = duree_audio % duree_video  # Durée restante après les répétitions entières
+        clip_repete = clip_video.loop(n=repetition)
+        clip_reste = clip_video.subclip(0, reste)
+        clip_video_ajuste = concatenate_videoclips([clip_repete, clip_reste])
     else:
         # La vidéo et l'audio ont déjà la même durée
         clip_video_ajuste = clip_video
 
     # Sauvegarde du clip vidéo ajusté
     clip_video_ajuste.write_videofile(f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/final_component/Acticle_1_finale.mp4")
+
+
+
+
+
+
+
+
+
 
 
 
@@ -132,8 +149,13 @@ def ajustement_rush():
         # Coupe le clip vidéo si la vidéo est plus longue que l'audio
         clip_video_ajuste = clip_video.subclip(0, duree_audio)
     elif duree_video < duree_audio:
-        # Boucle la vidéo si la vidéo est plus courte que l'audio (optionnel, selon votre besoin)
-        clip_video_ajuste = clip_video.loop(duration=duree_audio)
+        # Boucle la vidéo si la vidéo est plus courte que l'audio
+        # Assurez-vous de ne pas dépasser la durée de l'audio lors du bouclage
+        repetition = duree_audio // duree_video  # Nombre entier de répétitions
+        reste = duree_audio % duree_video  # Durée restante après les répétitions entières
+        clip_repete = clip_video.loop(n=repetition)
+        clip_reste = clip_video.subclip(0, reste)
+        clip_video_ajuste = concatenate_videoclips([clip_repete, clip_reste])
     else:
         # La vidéo et l'audio ont déjà la même durée
         clip_video_ajuste = clip_video
@@ -187,8 +209,13 @@ def ajustement_rush():
         # Coupe le clip vidéo si la vidéo est plus longue que l'audio
         clip_video_ajuste = clip_video.subclip(0, duree_audio)
     elif duree_video < duree_audio:
-        # Boucle la vidéo si la vidéo est plus courte que l'audio (optionnel, selon votre besoin)
-        clip_video_ajuste = clip_video.loop(duration=duree_audio)
+        # Boucle la vidéo si la vidéo est plus courte que l'audio
+        # Assurez-vous de ne pas dépasser la durée de l'audio lors du bouclage
+        repetition = duree_audio // duree_video  # Nombre entier de répétitions
+        reste = duree_audio % duree_video  # Durée restante après les répétitions entières
+        clip_repete = clip_video.loop(n=repetition)
+        clip_reste = clip_video.subclip(0, reste)
+        clip_video_ajuste = concatenate_videoclips([clip_repete, clip_reste])
     else:
         # La vidéo et l'audio ont déjà la même durée
         clip_video_ajuste = clip_video

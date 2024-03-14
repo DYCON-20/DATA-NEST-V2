@@ -111,4 +111,3 @@ def generer_filtre_veille():
     # Fermeture de la connexion
     conn.close()
 
-generer_filtre_veille()

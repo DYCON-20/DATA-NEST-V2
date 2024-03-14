@@ -9,15 +9,14 @@ from setting import connect_db
 from datetime import datetime, timedelta
 
 from setting import Theme
+from video.setup_video import  setup
 
 from video.setup_video import  setup
 from Thread.Thread import recuperation 
 from Article.Chat_GPT_filtre import generer_filtre_veille 
 from Article.Chat_GPT_Article import generer_article_veille 
-from video.Chat_GPT_Video_filtre import  creation_filtre_video
 from video.Chat_GPT_Video_mot import  création_mot_video
 from video.Chat_GPT_Video_Script import creation_script_video 
-from video.setup_video import  setup
 
 from video.Recuperation_Video import  recuperation_videos
 
@@ -33,6 +32,7 @@ from video.Montage_Video_4 import  assamblage_sous_titre_rush
 # Créez le bot
 bot = commands.Bot(command_prefix='!')
 MODE_DEV = True
+
 
 
 
@@ -101,6 +101,7 @@ async def on_ready():
         envoyer_message.start()
 
 
+
 # Une tâche planifiée pour envoyer un message à 8h chaque jour
 @tasks.loop(time=time(hour=8))
 async def envoyer_message():
@@ -126,10 +127,7 @@ async def envoyer_message():
     await bot.loop.run_in_executor(None, generer_article_veille)
     await channel.send("{datetime_Monitoring} Le script `generer_article_veille` a terminé son exécution.")
     #
-    #
-    await bot.loop.run_in_executor(None, creation_filtre_video)
-    await channel.send("{datetime_Monitoring} Le script `creation_filtre_video` a terminé son exécution.")
-    #      
+   
     #
     await bot.loop.run_in_executor(None, création_mot_video)
     await channel.send("{datetime_Monitoring} Le script `création_mot_video` a terminé son exécution.")
@@ -175,11 +173,14 @@ async def envoyer_message():
     conn.close()   
 
     MESSAGE = resultat[0]
-    await channel.send(MESSAGE)
+    Apart1 = MESSAGE[:2000]
+    Apart2 = MESSAGE[2000:]
+    await channel.send(Apart1)
+    await channel.send(Apart2)
+
     # Envoi de la vidéo
     VIDEO_PATH = f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/{datetime_Monitoring}_{Theme}_monitoring_.mp4"
     await channel.send(file=discord.File(VIDEO_PATH))
 
     view = MultipleScriptButtonView(channel)
     await channel.send("Cliquez sur un des boutons pour exécuter un script.", view=view)
-

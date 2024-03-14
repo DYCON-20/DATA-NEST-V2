@@ -1,0 +1,1 @@
+Github annonce la disponibilité générale de GitHub Copilot Chat dans les IDE JetBrains. Cette nouvelle fonctionnalité devrait améliorer l'expérience de codage des développeurs utilisant les IDE JetBrains. [Source: Github]

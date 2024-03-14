@@ -74,3 +74,4 @@ def recuperation_videos():
     else:
         print("Aucun résultat trouvé pour la date d'hier.")
     conn.close()
+    pass

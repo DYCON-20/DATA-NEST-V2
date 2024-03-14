@@ -1,13 +1,11 @@
 import sys
 from pathlib import Path
 sys.path.append(str(Path(__file__).resolve().parent.parent))
-from Thread.Thread import recuperation 
 from Article.Chat_GPT_filtre import generer_filtre_veille 
 from Article.Chat_GPT_Article import generer_article_veille 
 from video.Chat_GPT_Video_filtre import  creation_filtre_video
 from video.Chat_GPT_Video_mot import  création_mot_video
 from video.Chat_GPT_Video_Script import creation_script_video 
-from video.setup_video import  setup
 
 from video.Recuperation_Video import  recuperation_videos
 
@@ -33,8 +31,6 @@ def retry(func, max_attempts=5, error_message="Erreur lors de la récupération"
 
 def main():
     
-    setup()
-    retry(recuperation, 5)
     generer_filtre_veille ()
     generer_article_veille()
     retry(creation_filtre_video, 1)  # Relance 1 fois

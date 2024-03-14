@@ -23,4 +23,3 @@ conn.close()
 
 Source = "IT monitoring from "+ yesterday_str + " Tread = " + yesterday_date_threads_resultat 
 
-#print(Source)
