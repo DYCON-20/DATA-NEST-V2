@@ -85,11 +85,9 @@ def scrape_thread(url: str) -> None:
             ""
         )
 
-        # Assurez-vous que result_tuple est une liste ou un tuple
         result_list = list(result_tuple)
         recuperationbdd([result_tuple])
 
 
 
 
-# Exemple d'utilisation :

@@ -15,5 +15,3 @@ def recuperation():
             print(f"Erreur lors du scraping de {url}: {e}")
     return resultat_afficher
 
-# Appeler la fonction afficher() et imprimer les résultats
-#resultat_afficher = recuperation()

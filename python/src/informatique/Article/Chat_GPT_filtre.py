@@ -28,7 +28,7 @@ def generer_filtre_veille():
     ....
     """
 
-    response = client.chat.completions.create(model="gpt-4", # Specify the model
+    response = client.chat.completions.create(model="gpt-4", 
     messages=[
           {"role": "system", "content": instruction },
           {"role": "user", "content": data}
@@ -43,12 +43,14 @@ def generer_filtre_veille():
     print(result_filtre)
 
 # Calcule la date du jour précédent
+# Calculates the date of the previous day
     date_du_jour_avant = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
 
 
     c = conn.cursor()
 
 # Crée la table Article_Filtre si elle n'existe pas
+# Creates the Article_Filter table if it does not exist
     c.execute('''
         CREATE TABLE IF NOT EXISTS Article_Filtre (
             id INT AUTO_INCREMENT PRIMARY KEY,
@@ -58,9 +60,11 @@ def generer_filtre_veille():
     ''')
 
 # Vérifie si un enregistrement avec la date d'hier existe déjà
+# Checks if a record with yesterday's date already exists
     c.execute('SELECT * FROM Article_Filtre WHERE date = %s', (date_du_jour_avant,))
     if c.fetchone() is None:
     # Insère les données dans la base de données si aucun enregistrement n'existe pour cette date
+    # Insert data into database if no records exist for this date
         c.execute('INSERT INTO Article_Filtre (Filtre_resultat, date) VALUES (%s, %s)', (result_filtre, date_du_jour_avant))
         conn.commit()
         print("Enregistrement ajouté avec succès.")
@@ -68,7 +72,8 @@ def generer_filtre_veille():
         print("Un enregistrement existe déjà pour cette date, aucun nouvel enregistrement n'a été ajouté.")
 
 # Ferme la connexion à la base de données
-
+# Close the database connection
+        
     articles = result_filtre.strip().split("\n\nArticle ")
     articles = [article.split(": \n\n", 1)[1] if ": \n\n" in article else article for article in articles]
     
@@ -77,14 +82,17 @@ def generer_filtre_veille():
         return
     
     # Extraction des 5 premiers articles
+    # Extraction of the first 5 articles
     articles_selectionnes = articles[:5]
     
     # Formatage de la date du jour précédent
+    # Formatting the previous day's date
     date_du_jour_avant = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
     
  
     
     # Création de la table si elle n'existe pas
+    # Creation of the table if it does not exist
     c.execute('''
         CREATE TABLE IF NOT EXISTS Video_filtre (
             id INT AUTO_INCREMENT PRIMARY KEY,
@@ -98,6 +106,7 @@ def generer_filtre_veille():
     ''')
     
     # Vérification de l'existence d'un enregistrement pour la date du jour précédent
+    # Checking for the existence of a record for the previous day's date
     c.execute('SELECT * FROM Video_filtre WHERE date = %s', (date_du_jour_avant,))
     if c.fetchone() is None:
         # Insérer les données

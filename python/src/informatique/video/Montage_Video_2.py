@@ -1,7 +1,7 @@
 import sys
 from pathlib import Path
 from datetime import datetime, timedelta
-from moviepy.editor import VideoFileClip, concatenate_videoclips, AudioFileClip, concatenate_audioclips
+from moviepy.editor import VideoFileClip, concatenate_videoclips, AudioFileClip, concatenate_audioclips, ImageClip, CompositeVideoClip
 
 sys.path.append(str(Path(__file__).parent.parent))
 from setting import Theme
@@ -66,6 +66,14 @@ def assamblage_rush():
     nom_fichier_sortie_video = f"{base_pathv}/assembly.mp4"
     clip_final.write_videofile(nom_fichier_sortie_video, codec=codec_video)
 
+    image_path = '/Applications/XAMPP/xamppfiles/htdocs/DATA-NEST-V2/python/data/Ressource/back.png'  # Chemin vers votre image
+    image_clip = ImageClip(image_path).set_duration(clip_final.duration).resize(resolution)
+    final_video_with_image = CompositeVideoClip([clip_final, image_clip])
+    
+    nom_fichier_sortie_video = f"{base_pathv}/assembly.mp4"
+    final_video_with_image.write_videofile(nom_fichier_sortie_video, codec=codec_video)
+    
+
     nom_fichier_sortie_audio = f"{base_patha}/Compilation_audio_finale.mp3"
     clip_audio_final.write_audiofile(nom_fichier_sortie_audio)
 
@@ -75,3 +83,4 @@ def assamblage_rush():
         clip.close()
 
     pass
+

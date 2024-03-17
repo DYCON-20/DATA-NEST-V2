@@ -1,8 +1,16 @@
 import sys
 from pathlib import Path
 sys.path.append(str(Path(__file__).resolve().parent.parent))
+
+from Thread.Thread import recuperation 
 from Article.Chat_GPT_filtre import generer_filtre_veille 
+
+
 from Article.Chat_GPT_Article import generer_article_veille 
+
+from video.setup_video import  setup
+
+
 from video.Chat_GPT_Video_filtre import  creation_filtre_video
 from video.Chat_GPT_Video_mot import  création_mot_video
 from video.Chat_GPT_Video_Script import creation_script_video 
@@ -30,17 +38,19 @@ def retry(func, max_attempts=5, error_message="Erreur lors de la récupération"
                 print("Nombre maximal de tentatives atteint. Abandon de la fonction.")
 
 def main():
-    
-    generer_filtre_veille ()
-    generer_article_veille()
-    retry(creation_filtre_video, 1)  # Relance 1 fois
-    retry(création_mot_video, 1)     # Relance 1 fois
-    retry(creation_script_video, 1)
-    retry(recuperation_videos, 10)
-    retry(voice_videos, 10)
-    retry(ajustement_rush, 10)       # Ici, on combine ajustement_rush et assamblage_rush
-    retry(assamblage_rush, 10)       # dans la même séquence de réessai si nécessaire.
-    retry(crated_subtitle, 10)       # Pareil pour crated_subtitle et assamblage_sous_titre_rush.
+    #recuperation()
+    #setup()
+    #generer_filtre_veille ()
+    #generer_article_veille()
+    #retry(creation_filtre_video, 1)  # Relance 1 fois
+    #retry(création_mot_video, 1)     # Relance 1 fois
+    #retry(creation_script_video, 1)
+    #retry(recuperation_videos, 10)
+    #setup()
+    #retry(voice_videos, 10)
+    #retry(ajustement_rush, 10)       
+    #retry(assamblage_rush, 10)       # dans la même séquence de réessai si nécessaire.
+    #retry(crated_subtitle, 10)       # Pareil pour crated_subtitle et assamblage_sous_titre_rush.
     retry(assamblage_sous_titre_rush, 10)
 
 if __name__ == "__main__":

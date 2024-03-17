@@ -1,26 +1,11 @@
-#rejouter fonction nom+date
-#rajouter supresion rush 
-import os
-import pysrt
 import sys
 from pathlib import Path
 sys.path.append(str(Path(__file__).parent.parent))
 import random
 from datetime import datetime, timedelta
-from mutagen.mp3 import MP3
-from moviepy.editor import VideoFileClip, AudioFileClip
-import requests
-from moviepy.editor import VideoFileClip, AudioFileClip
-from moviepy.editor import VideoFileClip, AudioFileClip, TextClip, CompositeVideoClip
-from setting import AssemblyAI  
-
-from moviepy.editor import VideoFileClip, concatenate_videoclips, AudioFileClip, concatenate_audioclips
 from setting import AssemblyAI
 import assemblyai as aai
-
 from setting import Theme
-
-
 datetime_Monitoring = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
 
 
