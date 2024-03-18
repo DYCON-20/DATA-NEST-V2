@@ -51,7 +51,7 @@ def main():
     #retry(ajustement_rush, 10)       
     #retry(assamblage_rush, 10)       # dans la même séquence de réessai si nécessaire.
     #retry(crated_subtitle, 10)       # Pareil pour crated_subtitle et assamblage_sous_titre_rush.
-    retry(assamblage_sous_titre_rush, 10)
+    #retry(assamblage_sous_titre_rush, 10)
 
 if __name__ == "__main__":
     main()

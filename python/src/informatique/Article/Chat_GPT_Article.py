@@ -2,7 +2,8 @@ import sys
 from pathlib import Path
 sys.path.append(str(Path(__file__).parent.parent))
 from setting import client
-from source import Source
+from setting import LANGUAGE
+
 from datetime import datetime, timedelta
 from setting import connect_db
 conn = connect_db()
@@ -41,8 +42,8 @@ def generer_article_veille():
 
     data = resultat_en_string
 
-    instruction = """
-Bonjour je m’appelle dycon est tu es programme qui récupère des textes et tu dois les analyser et créer un résumé dans un article de veille informatique 
+    instruction = f"""
+Bonjour je m’appelle dycon est tu es programme qui récupère des textes et tu dois les analyser et créer un résumé en {LANGUAGE} dans un article de veille informatique 
 Pour créer l’article suis cette template
 
 (Utilise Pas de lien)
