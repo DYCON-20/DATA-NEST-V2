@@ -11,8 +11,10 @@ from setting import API_KEY, connect_db, Theme
 datetime_Monitoring = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
 
 def recuperation_videos():
+    print("-")
+    print("🟦 Thanks to the keyword recover the videos [ B{5/10} ]🟦")
+
     URL = 'https://pixabay.com/api/videos/'
-    print("recuperation_videos")
     
     # Définition d'une liste de mots-clés de secours
     mots_cles_secours = ['MacBook', 'technology', 'city', 'education', 'music']
@@ -24,7 +26,7 @@ def recuperation_videos():
             r.raise_for_status()
             with open(os.path.join(dossier_destination, nom_fichier), 'wb') as f:
                 shutil.copyfileobj(r.raw, f)
-        print(f'Vidéo sauvegardée sous : {nom_fichier}')
+        print(f'⬜️ Video saved as: : {nom_fichier} ⬜️')
 
     def trouver_et_telecharger_videos(mot_cle, index, nombre_videos=3):
         videos_trouvees = 0
@@ -54,11 +56,11 @@ def recuperation_videos():
                     if videos_trouvees >= nombre_videos:
                         break
             else:
-                print(f'Erreur lors de la requête: {response.status_code}')
+                print(f'❌: {response.status_code}')
                 break
             if videos_trouvees < nombre_videos:
                 mot_cle = random.choice(mots_cles_secours)  # Sélection aléatoire d'un mot-clé de secours
-                page = 1  # Recommencez à partir de la première page avec le mot-clé de secours
+                page = 1  
 
     conn = connect_db()
     c = conn.cursor()
@@ -72,6 +74,6 @@ def recuperation_videos():
             if mot_cle:
                 trouver_et_telecharger_videos(mot_cle, i)
     else:
-        print("Aucun résultat trouvé pour la date d'hier.")
+        print("❌ No results found for yesterday's date ❌")
     conn.close()
     pass

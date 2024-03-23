@@ -11,7 +11,9 @@ from setting import Theme
 
 
 def setup():
-
+    print("-")
+    print("🟦 Prepare the different files for the final video [ B{2/10} ]🟦")
+    
     datetime_Monitoring = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
     print("setup")
 

@@ -1,1 +1,0 @@
-Apple a développé une nouvelle méthode multi-modale pour former rapidement de grands modèles de langage, permettant des systèmes d'apprentissage machine plus flexibles et puissants.

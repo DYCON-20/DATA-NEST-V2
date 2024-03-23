@@ -1,0 +1,1 @@
+Une faille de sécurité non corrigible dans les Macs Apple Silicon compromet le chiffrement.

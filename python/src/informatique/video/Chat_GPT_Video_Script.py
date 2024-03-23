@@ -5,6 +5,7 @@ from setting import client
 from datetime import datetime, timedelta
 from setting import connect_db  
 import os
+from setting import LANGUAGE
 
 from setting import Theme
 
@@ -12,7 +13,8 @@ from setting import Theme
 datetime_Monitoring = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
 
 def creation_script_video():
-  print("creation_script_video")
+  print("-")
+  print("🟦 Create the 5 scripts for the video [ B{4/10} ]🟦")
 
 
   from setting import connect_db
@@ -27,17 +29,17 @@ def creation_script_video():
 
   if resultat:
       data1, data2, data3, data4, data5 = resultat
-      print("Recup")
+      print("to recover")
   else:
-      print("Aucun résultat trouvé pour la date d'hier.")
+      print("❌No results found for yesterday's date.❌")
       data1 = data2 = data3 = data4 = data5 = None
 
   conn = connect_db()
   c = conn.cursor()
 
-  instruction = """You are a technology monitoring journalist, you speak in a video about a new article
+  instruction = f"""You are a technology monitoring journalist, you speak in a video about a new article
 
-Analyze the text and Generate a script for a video, in French based on the source to create the text of a video In this format I don't have them
+Analyze the text and Generate a script for a video, in {LANGUAGE} based on the source to create the text of a video In this format I don't have them
 it is very important that it does not exceed 180 characters
 
 
@@ -169,9 +171,9 @@ it is very important that it does not exceed 180 characters
   if c.fetchone() is None:
       c.execute('INSERT INTO Video_script (date, script_article_1, script_article_2, script_article_3, script_article_4, script_article_5) VALUES (%s, %s, %s, %s, %s, %s)', (date_du_jour_avant, script_article_1, script_article_2, script_article_3, script_article_4, script_article_5))
       conn.commit()
-      print("Enregistrement ajouté avec succès.")
+      print("🟩Record added successfully.🟩")
   else:
-      print("Un enregistrement existe déjà pour cette date, aucun nouvel enregistrement n'a été ajouté.")
+      print("🟧A record already exists for this date, no new records have been added.🟧")
 
   conn.close()
 
@@ -184,15 +186,15 @@ it is very important that it does not exceed 180 characters
 
   if not os.path.exists(chemin_dossier):
       os.makedirs(chemin_dossier)
-      print(f"Le dossier '{chemin_dossier}' a été créé.")
+      print(f"🟩The folder '{chemin_dossier}' has been created🟩")
   else:
-      print(f"Le dossier '{chemin_dossier}' existe déjà.")
+      print(f"🟧The folder'{chemin_dossier}' already exists🟧")
 
   for i, script in enumerate(scripts, start=1):
       chemin_fichier = os.path.join(chemin_dossier, f"script_article_{i}.txt")
       with open(chemin_fichier, "w") as fichier:
           fichier.write(script)
-      print(f"Le fichier 'script_article_{i}.txt' a été créé dans '{chemin_dossier}'.")
+      print(f"🟫the file'script_article_{i}.txt'was created in '{chemin_dossier}🟫'.")
 
-  print("4 fichiers texte ont été créés dans le dossier spécifié avec le contenu spécifique.")
+  print("4 text files were created in the specified folder with the specific content.")
 pass

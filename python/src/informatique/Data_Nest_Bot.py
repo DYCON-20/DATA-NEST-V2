@@ -12,7 +12,8 @@ from setting import Theme
 from setting import DISCORD_KEY
 
 from video.setup_video import  setup
-from Thread.Thread import recuperation 
+#from Thread.Thread import recuperation 
+from source import Source
 from Article.Chat_GPT_filtre import generer_filtre_veille 
 from Article.Chat_GPT_Article import generer_article_veille 
 from video.Chat_GPT_Video_mot import  création_mot_video
@@ -49,21 +50,21 @@ class MultipleScriptButtonView(View):
     @discord.ui.button(label="Régénérer le thread", style=discord.ButtonStyle.blurple)
     async def script1_button_callback(self, button, interaction):
         # Action pour le premier bouton
-        await self.channel.send("Régénérer le thread")
+        await self.channel.send(f"Régénérer le thread")
         button.disabled = True
         await interaction.response.edit_message(view=self)
         
     @discord.ui.button(label="Régénérer la vidéo", style=discord.ButtonStyle.blurple)
     async def script2_button_callback(self, button, interaction):
         # Action pour le second bouton
-        await self.channel.send("Le script 2 a été exécuté.")
+        await self.channel.send(f"Le script 2 a été exécuté.")
         button.disabled = True
         await interaction.response.edit_message(view=self)
 
     @discord.ui.button(label="Régénérer la vidéo", style=discord.ButtonStyle.blurple, custom_id="script3_button")
     async def script3_button_callback(self, button, interaction):
         # Action pour le troisième bouton
-        await self.channel.send("Le script 3 a été exécuté.")
+        await self.channel.send(f"Le script 3 a été exécuté.")
         button.disabled = True
         await interaction.response.edit_message(view=self)
 
@@ -79,7 +80,7 @@ class MultipleScriptButtonView(View):
         await asyncio.sleep(5)  # Remplacez 5 par 3600 pour une heure
         if not self.script4_button_clicked:
             # Exécute le script ici si le bouton n'a pas été cliqué
-            await self.channel.send("Le script 4 a été exécuté automatiquement après 1 heure.")
+            await self.channel.send(f"Le script 4 a été exécuté automatiquement après 1 heure.")
             for item in self.children:
                 if item.custom_id == "script4_button":
                     item.disabled = True
@@ -109,58 +110,66 @@ async def envoyer_message():
     channel = bot.get_channel(int(channel_id))
     datetime_Monitoring = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
 
+
+
     #
-    await bot.loop.run_in_executor(None, setup)
-    await channel.send("{datetime_Monitoring} Le script `setup` a terminé son exécution.")
+    #await bot.loop.run_in_executor(None, recuperation)
+    #await channel.send(f"{datetime_Monitoring} Le script `recuperation` a terminé son exécution.")
     #
 
     #
-    await bot.loop.run_in_executor(None, recuperation)
-    await channel.send("{datetime_Monitoring} Le script `recuperation` a terminé son exécution.")
+    await bot.loop.run_in_executor(None, Source)
+    await channel.send(f"{datetime_Monitoring} Le script `recuperation` a terminé son exécution.")
     #
 
     #
     await bot.loop.run_in_executor(None, generer_filtre_veille)
-    await channel.send("{datetime_Monitoring} Le script `generer_filtre_veille` a terminé son exécution.")
+    await channel.send(f"{datetime_Monitoring} Le script `generer_filtre_veille` a terminé son exécution.")
     #
+
     #
     await bot.loop.run_in_executor(None, generer_article_veille)
-    await channel.send("{datetime_Monitoring} Le script `generer_article_veille` a terminé son exécution.")
+    await channel.send(f"{datetime_Monitoring} Le script `generer_article_veille` a terminé son exécution.")
     #
    
     #
+    await bot.loop.run_in_executor(None, setup)
+    await channel.send(f"{datetime_Monitoring} Le script `setup` a terminé son exécution.")
+    #
+       
+    #
     await bot.loop.run_in_executor(None, création_mot_video)
-    await channel.send("{datetime_Monitoring} Le script `création_mot_video` a terminé son exécution.")
+    await channel.send(f"{datetime_Monitoring} Le script `création_mot_video` a terminé son exécution.")
     #
     
     #
     await bot.loop.run_in_executor(None, creation_script_video)
-    await channel.send("{datetime_Monitoring} Le script `creation_script_video` a terminé son exécution.")
+    await channel.send(f"{datetime_Monitoring} Le script `creation_script_video` a terminé son exécution.")
     #     
 
     #
     await bot.loop.run_in_executor(None, recuperation_videos)
-    await channel.send("{datetime_Monitoring} Le script `recuperation_videos` a terminé son exécution.")
+    await channel.send(f"{datetime_Monitoring} Le script `recuperation_videos` a terminé son exécution.")
     #    
     #
     await bot.loop.run_in_executor(None, voice_videos)
-    await channel.send("{datetime_Monitoring} Le script `voice_videos` a terminé son exécution.")
+    await channel.send(f"{datetime_Monitoring} Le script `voice_videos` a terminé son exécution.")
     #      
     #
     await bot.loop.run_in_executor(None, ajustement_rush)
-    await channel.send("{datetime_Monitoring} Le script `ajustement_rush` a terminé son exécution.")
+    await channel.send(f"{datetime_Monitoring} Le script `ajustement_rush` a terminé son exécution.")
     #     
     #
     await bot.loop.run_in_executor(None, assamblage_rush)
-    await channel.send("{datetime_Monitoring} Le script `assamblage_rush` a terminé son exécution.")
+    await channel.send(f"{datetime_Monitoring} Le script `assamblage_rush` a terminé son exécution.")
     #    
     #
     await bot.loop.run_in_executor(None, crated_subtitle)
-    await channel.send("{datetime_Monitoring} Le script `crated_subtitle` a terminé son exécution.")
+    await channel.send(f"{datetime_Monitoring} Le script `crated_subtitle` a terminé son exécution.")
     #
     #
     await bot.loop.run_in_executor(None, assamblage_sous_titre_rush)
-    await channel.send("{datetime_Monitoring} Le script  `assamblage_sous_titre_rush` a terminé son exécution.")
+    await channel.send(f"{datetime_Monitoring} Le script  `assamblage_sous_titre_rush` a terminé son exécution.")
     #          
 
     conn = connect_db()
@@ -172,17 +181,24 @@ async def envoyer_message():
     c.close()
     conn.close()   
 
-    MESSAGE = resultat[0]
-    Apart1 = MESSAGE[:2000]
-    Apart2 = MESSAGE[2000:]
-    await channel.send(Apart1)
-    await channel.send(Apart2)
+    MESSAGE = resultat[0]  # Supposons que 'resultat[0]' contienne votre message
+
+    if len(MESSAGE) <= 2000:
+        await channel.send(MESSAGE)
+    else:
+        Apart1 = MESSAGE[:2000]
+        Apart2 = MESSAGE[2000:]
+        await channel.send(Apart1)
+        if Apart2:
+            await channel.send(Apart2)
+
 
     # Envoi de la vidéo
     VIDEO_PATH = f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/{datetime_Monitoring}_{Theme}_monitoring_.mp4"
     await channel.send(file=discord.File(VIDEO_PATH))
 
     view = MultipleScriptButtonView(channel)
-    await channel.send("Cliquez sur un des boutons pour exécuter un script.", view=view)
-# Remplacez 'VOTRE_TOKEN_ICI' par le token de votre bot
+    await channel.send(f"Cliquez sur un des boutons pour exécuter un script.", view=view)
+
+    
 bot.run(DISCORD_KEY)

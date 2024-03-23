@@ -1,1 +1,0 @@
-Un bug dans la version macOS Sonoma 14.4 fait que les processus Java se terminent de manière inattendue. Les utilisateurs Mac qui en ont besoin devraient retarder la mise à jour. C'est un problème m

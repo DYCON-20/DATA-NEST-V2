@@ -13,7 +13,9 @@ from setting import connect_db
 
 
 def creation_filtre_video():
-    print("creation_filtre_video")
+    
+    print("-")
+    print("🟦Creating the video filter [1/i]🟦")
     data = Source
     conn = connect_db()
     c = conn.cursor()
@@ -76,9 +78,9 @@ def creation_filtre_video():
             c.execute('INSERT INTO Video_filtre (date, Video_filtre1, Video_filtre2, Video_filtre3, Video_filtre4, Video_filtre5) VALUES (%s, %s, %s, %s, %s, %s)', 
             (date_du_jour_avant, article_1, article_2, article_3, article_4, article_5))
             conn.commit()
-            print("Enregistrement ajouté avec succès.")
+            print("🟩Record added successfully.🟩")
         else:
-            print("Un enregistrement existe déjà pour cette date, aucun nouvel enregistrement n'a été ajouté.")
+            print("🟧A record already exists for this date, no new records have been added.🟧")
     else:
         print("Not enough articles found. Found only:", len(articles))
 

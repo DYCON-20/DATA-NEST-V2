@@ -25,7 +25,8 @@ datetime_Monitoring = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
 
 
 def assamblage_sous_titre_rush():
-    print("assamblage_sous_titre_rush")
+    print("-")
+    print("🟦 Create the video subtitles [ B{10/10} ]🟦")
 
 
 

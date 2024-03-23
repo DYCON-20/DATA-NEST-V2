@@ -14,6 +14,8 @@ import requests
 import base64
 import os
 from playsound import playsound
+from setting import TEXTE_INTRO, TEXTE_OUTRO
+
 
 from setting import Theme
 
@@ -21,7 +23,8 @@ from setting import Theme
 datetime_Monitoring = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
 
 def voice_videos():
-
+    print("-")
+    print("🟦 Create voice recording [ B{6/10} ]🟦")
 
     # Assuming setting.py contains the necessary database connection parameters
     from setting import connect_db
@@ -45,9 +48,9 @@ def voice_videos():
         data1, data2, data3, data4, data5 = resultat
 
         # Display to confirm the values
-        print("Recup")
+        print("✅Recovery✅")
     else:
-        print("Aucun résultat trouvé pour la date d'hier.")
+        print("❌No results found for yesterday's date.❌")
         # Initialize variables if no result is found
         data1 = data2 = data3 = data4 = data5 = None
 
@@ -165,7 +168,7 @@ def voice_videos():
 
                 if play:
                     playsound(filepath)
-                print(f"Audio saved to {filepath}")
+                print(f"0️⃣Audio saved to {filepath}0️⃣")
                 return  # Succès, fin de la fonction
             except Exception as e:
                 print(f"Failed to make a request to {api_domain}. Error: {e}")
@@ -252,7 +255,7 @@ def voice_videos():
                 audio.export(filepath, format="mp3")                    
                 if play:
                     playsound(filepath)
-                print(f"Audio saved to {filepath}")
+                print(f"1️⃣Audio saved to {filepath}1️⃣")
                 return  # Succès, fin de la fonction
             except Exception as e:
                 print(f"Failed to make a request to {api_domain}. Error: {e}")
@@ -341,7 +344,7 @@ def voice_videos():
                 audio.export(filepath, format="mp3")                    
                 if play:
                     playsound(filepath)
-                print(f"Audio saved to {filepath}")
+                print(f"2️⃣Audio saved to {filepath}2️⃣")
                 return  # Succès, fin de la fonction
             except Exception as e:
                 print(f"Failed to make a request to {api_domain}. Error: {e}")
@@ -424,7 +427,7 @@ def voice_videos():
                 audio.export(filepath, format="mp3")                    
                 if play:
                     playsound(filepath)
-                print(f"Audio saved to {filepath}")
+                print(f"3️⃣Audio saved to {filepath}3️⃣")
                 return  # Succès, fin de la fonction
             except Exception as e:
                 print(f"Failed to make a request to {api_domain}. Error: {e}")
@@ -499,7 +502,7 @@ def voice_videos():
                 audio.export(filepath, format="mp3")                    
                 if play:
                     playsound(filepath)
-                print(f"Audio saved to {filepath}")
+                print(f"4️⃣Audio saved to {filepath}4️⃣")
                 return  # Succès, fin de la fonction
             except Exception as e:
                 print(f"Failed to make a request to {api_domain}. Error: {e}")
@@ -594,7 +597,7 @@ def voice_videos():
     session_id = "0741b49e02bc59213d450c65e4430382"
     text_speaker = "fr_002"
     filename = 'intro.mp3'
-    req_text = " Bonjour a tous bienvenue sur cette veile informatique 5 nouvelle en 1 minute "
+    req_text = TEXTE_INTRO
 
     play = False
 
@@ -631,7 +634,7 @@ def voice_videos():
                 audio.export(filepath, format="mp3")                    
                 if play:
                     playsound(filepath)
-                print(f"Audio saved to {filepath}")
+                print(f"5️⃣Audio saved to {filepath}5️⃣")
                 return  # Succès, fin de la fonction
             except Exception as e:
                 print(f"Failed to make a request to {api_domain}. Error: {e}")
@@ -649,7 +652,7 @@ def voice_videos():
     session_id = "0741b49e02bc59213d450c65e4430382"
     text_speaker = "fr_002"
     filename = 'outro.mp3'
-    req_text = " C'est la fin rendez vous demain pour une nouvelle veille "
+    req_text = TEXTE_OUTRO
 
     play = False
 
@@ -701,3 +704,4 @@ def voice_videos():
 
 
     pass
+

@@ -26,7 +26,8 @@ def ajuster_format_telephone(clip, resolution_cible=(1080, 1920)):
     return clip_final
 
 def assamblage_rush():
-    print("Assamblage rush")
+    print("-")
+    print("🟦 Rush assembly [ B{8/10} ]🟦")
     target_fps = 24
     codec_video = 'libx264'
     resolution = (1080, 1920)

@@ -1,25 +1,49 @@
 from setting import connect_db
 from datetime import datetime, timedelta
 
-# Établissement de la connexion
-conn = connect_db()
-cursor = conn.cursor()
+def Source():
+    # Établissement de la connexion
+    conn = connect_db()
+    cursor = conn.cursor()
 
-# Calcul de la date du jour d'avant
-yesterday_date = datetime.now() - timedelta(1)
-yesterday_str = yesterday_date.strftime('%Y-%m-%d')
+    # Création de la table Sources si elle n'existe pas
+    create_table_query = """
+    CREATE TABLE IF NOT EXISTS Sources (
+        ID SERIAL PRIMARY KEY,
+        Date DATE NOT NULL,
+        Content TEXT NOT NULL
+    )
+    """
+    cursor.execute(create_table_query)
 
-# Sélection et affichage des threads du jour d'avant
-cursor.execute("SELECT User, Texte FROM Article_Thread WHERE Date_Thread LIKE %s", (yesterday_str + '%',))
+    # Validation de la création de la table
+    conn.commit()
 
-yesterday_date_threads_resultat = cursor.fetchall()
+    # Calcul de la date du jour d'avant
+    yesterday_date = datetime.now() - timedelta(1)
+    yesterday_str = yesterday_date.strftime('%Y-%m-%d')
 
-# Conversion du résultat en string
-yesterday_date_threads_resultat = str(yesterday_date_threads_resultat)
+    # Vérification de l'existence d'une entrée pour cette date
+    cursor.execute("SELECT * FROM Sources WHERE Date = %s", (yesterday_str,))
+    if cursor.fetchone() is None:
+        # Aucune entrée pour cette date, procéder à l'insertion
 
-# Affichage du résultat sous forme de string
+        # Sélection et affichage des threads du jour d'avant
+        cursor.execute("SELECT User, Texte FROM Article_Thread WHERE Date_Thread LIKE %s", (yesterday_str + '%',))
+        yesterday_date_threads_resultat = cursor.fetchall()
 
-conn.close()
+        # Préparation de la chaîne à insérer
+        source_content = "IT monitoring from " + yesterday_str + " Thread = " + str(yesterday_date_threads_resultat)
+        # Insertion dans la base de données
+        insert_query = "INSERT INTO Sources (Date, Content) VALUES (%s, %s)"
+        cursor.execute(insert_query, (yesterday_str, source_content))
 
-Source = "IT monitoring from "+ yesterday_str + " Tread = " + yesterday_date_threads_resultat 
+        # Validation de l'insertion
+        conn.commit()
+    else:
+        # Une entrée existe déjà pour cette date, aucune action requise
+        print("Une entrée existe déjà pour la date", yesterday_str)
+
+    # Fermeture de la connexion
+    conn.close()
 

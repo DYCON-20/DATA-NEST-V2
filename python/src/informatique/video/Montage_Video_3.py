@@ -11,8 +11,8 @@ datetime_Monitoring = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
 
 
 def crated_subtitle():
-    print("crated_subtitle")
-
+    print("-")
+    print("🟦 Create the video subtitles [ B{9/10} ]🟦")
 
 
     nombre_aleatoire_entier = random.randint(1, 3)

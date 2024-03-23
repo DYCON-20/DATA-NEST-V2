@@ -1,0 +1,68 @@
+1
+00:00:00,248 --> 00:00:03,430
+Bonjour à tous, bienvenue sur cette veille informatique 5 nouvelles
+
+2
+00:00:03,470 --> 00:00:07,302
+en une minute. Reddy a fixé le prix de son action à 34
+
+3
+00:00:07,312 --> 00:00:10,173
+dollars mercredi au sommet de la fourchette prévue,
+
+4
+00:00:10,213 --> 00:00:14,435
+signalant l'enthousiasme des investisseurs pour son introduction en bourse jeudi,
+
+5
+00:00:14,475 --> 00:00:18,397
+là. Le département de la justice américaine prépare une poursuite
+
+6
+00:00:18,437 --> 00:00:21,819
+formelle contre Apple. Selon un rapport de Blomberg,
+
+7
+00:00:21,839 --> 00:00:25,481
+les allégations concernant le pouvoir monopolistique de l'App Store et OS
+
+8
+00:00:25,501 --> 00:00:29,184
+pour Erappe pelaient les récentes. Nous sommes ravis d'annoncer
+
+9
+00:00:29,204 --> 00:00:32,769
+que J-Hub Copilot dans la CLI est désormais disponible pour tous nos
+
+10
+00:00:32,810 --> 00:00:35,894
+clients Copilot individuels, professionnels et entreprises.
+
+11
+00:00:36,777 --> 00:00:40,521
+Une nouvelle surgenre nous franchissons une nouvelle étape vers notre vision d'intégration
+
+12
+00:00:40,561 --> 00:00:44,005
+avec le FEU DIVERS. Le FEU DIVERS, abréviation de l'Univers
+
+13
+00:00:44,045 --> 00:00:47,568
+Fédéré, est un réseau social mondial où Apple
+
+14
+00:00:47,588 --> 00:00:50,792
+riposte vigoureusement contre le cas d'antitrust du département
+
+15
+00:00:50,832 --> 00:00:54,275
+de la justice le qualifiant de mal avisé et mettant en garde
+
+16
+00:00:54,295 --> 00:00:57,799
+contre le risque de compromettre l'écosystème mobile intégré.
+
+17
+00:00:57,819 --> 00:00:59,781
+C'est la fin rendez-vous demain pour une nouvelle veille.
+

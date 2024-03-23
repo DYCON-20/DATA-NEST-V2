@@ -10,8 +10,8 @@ from source import Source
 from setting import connect_db
 
 def création_mot_video():
-  print("création_mot_video")
-
+  print("-")
+  print("🟦 filter and create keywords for videos [ B{3/10} ]🟦")
 
   # Connect to the database
   conn = connect_db()
@@ -141,9 +141,9 @@ def création_mot_video():
       # Insère les données dans la base de données si aucun enregistrement n'existe pour cette date
       c.execute('INSERT INTO Video_mots (date, mots_clée_1, mots_clée_2, mots_clée_3, mots_clée_4, mots_clée_5) VALUES (%s, %s, %s, %s, %s, %s)', (date_du_jour_avant, mots_clée_1, mots_clée_2, mots_clée_3, mots_clée_4, mots_clée_5))
       conn.commit()
-      print("Enregistrement ajouté avec succès.")
+      print("🟩Record added successfully.🟩")
   else:
-      print("Un enregistrement existe déjà pour cette date, aucun nouvel enregistrement n'a été ajouté.")
+      print("🟧A record already exists for this date, no new records have been added.🟧")
 
   # Ferme la connexion à la base de données
   conn.close()

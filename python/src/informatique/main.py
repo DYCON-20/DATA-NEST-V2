@@ -42,16 +42,16 @@ def main():
     #setup()
     #generer_filtre_veille ()
     #generer_article_veille()
-    #retry(creation_filtre_video, 1)  # Relance 1 fois
-    #retry(création_mot_video, 1)     # Relance 1 fois
-    #retry(creation_script_video, 1)
-    #retry(recuperation_videos, 10)
-    #setup()
-    #retry(voice_videos, 10)
-    #retry(ajustement_rush, 10)       
-    #retry(assamblage_rush, 10)       # dans la même séquence de réessai si nécessaire.
-    #retry(crated_subtitle, 10)       # Pareil pour crated_subtitle et assamblage_sous_titre_rush.
-    #retry(assamblage_sous_titre_rush, 10)
+    retry(creation_filtre_video, 1)  # Relance 1 fois
+    retry(création_mot_video, 1)     # Relance 1 fois
+    retry(creation_script_video, 1)
+    retry(recuperation_videos, 10)
+    setup()
+    retry(voice_videos, 10)
+    retry(ajustement_rush, 10)       
+    retry(assamblage_rush, 10)       # dans la même séquence de réessai si nécessaire.
+    retry(crated_subtitle, 10)       # Pareil pour crated_subtitle et assamblage_sous_titre_rush.
+    retry(assamblage_sous_titre_rush, 10)
 
 if __name__ == "__main__":
     main()
