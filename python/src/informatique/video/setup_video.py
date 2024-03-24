@@ -5,7 +5,7 @@ from pathlib import Path
 sys.path.append(str(Path(__file__).parent.parent))
 from datetime import datetime, timedelta
 
-from setting import Theme
+from Setting.setting import  Theme
 
 
 

@@ -1,0 +1,60 @@
+1
+00:00:00,248 --> 00:00:03,720
+Bonjour à tous, bienvenue sur cette Veille Informatique 5 nouvelles en 1
+
+2
+00:00:03,730 --> 00:00:07,512
+minute. Des randonneurs bloqués en haute montagne à cause du mauvais
+
+3
+00:00:07,552 --> 00:00:12,135
+temps sauvés en 24 heures grâce à SOS via satellite pour iPhone.
+
+4
+00:00:12,175 --> 00:00:15,276
+Découvrez le dernier membre de la famille Arduino Nano,
+
+5
+00:00:15,316 --> 00:00:19,539
+le Nano Maté, basé sur un cœur Cortex-M33 de silicon Naben
+
+6
+00:00:19,579 --> 00:00:23,180
+GM240S. Parfait pour développer rapidement des
+
+7
+00:00:23,221 --> 00:00:26,542
+applications domotiques avec le protocole Maté. Ready à
+
+8
+00:00:26,603 --> 00:00:30,045
+lancer un nouveau format publicitaire, les annonces furent tirées forme
+
+9
+00:00:30,085 --> 00:00:33,548
+pour maximiser l'engagement des utilisateurs. Cependant,
+
+10
+00:00:33,568 --> 00:00:36,871
+ces annonces ressemblant à des publications régulières pourraient ne pas plaire à
+
+11
+00:00:36,931 --> 00:00:40,073
+tous. Votre espace de stockage est saturé,
+
+12
+00:00:40,113 --> 00:00:44,807
+découvrez des astuces pour libérer de l'espace sur votre ordinateur Windows 11.
+
+13
+00:00:44,817 --> 00:00:48,079
+Dans le monde du développement, une simple erreur dans une demande de
+
+14
+00:00:48,119 --> 00:00:51,812
+tirage peut tout changer. Cela vous est-il déjà arrivé ?
+
+15
+00:00:51,822 --> 00:00:53,864
+C'est la fin, rendez-vous demain pour une nouvelle veille.
+

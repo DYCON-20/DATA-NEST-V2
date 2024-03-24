@@ -5,29 +5,17 @@ from discord.ext import commands, tasks
 from discord.ext import commands
 from discord.ui import  View
 from datetime import time
-from setting import connect_db  
+from Setting.setting import  connect_db  
 from datetime import datetime, timedelta
 
-from setting import Theme
-from setting import DISCORD_KEY
+from Setting.setting import  Theme
+from Setting.setting import  DISCORD_KEY
 
-from video.setup_video import  setup
-#from Thread.Thread import recuperation 
-from source import Source
-from Article.Chat_GPT_filtre import generer_filtre_veille 
-from Article.Chat_GPT_Article import generer_article_veille 
-from video.Chat_GPT_Video_mot import  création_mot_video
-from video.Chat_GPT_Video_Script import creation_script_video 
+from step.setup import  setup
+from step.recovery import  recovery
+from step.article_creation import  generer_article
+from step.video_creation import  generer_video
 
-from video.Recuperation_Video import  recuperation_videos
-
-
-from video.Voice_script import  voice_videos
-
-from video.Montage_Video_1 import  ajustement_rush
-from video.Montage_Video_2 import  assamblage_rush
-from video.Montage_Video_3 import  crated_subtitle
-from video.Montage_Video_4 import  assamblage_sous_titre_rush
 
 
 # Créez le bot
@@ -112,65 +100,28 @@ async def envoyer_message():
 
 
 
-    #
-    #await bot.loop.run_in_executor(None, recuperation)
-    #await channel.send(f"{datetime_Monitoring} Le script `recuperation` a terminé son exécution.")
-    #
 
-    #
-    await bot.loop.run_in_executor(None, Source)
-    await channel.send(f"{datetime_Monitoring} Le script `recuperation` a terminé son exécution.")
-    #
 
-    #
-    await bot.loop.run_in_executor(None, generer_filtre_veille)
-    await channel.send(f"{datetime_Monitoring} Le script `generer_filtre_veille` a terminé son exécution.")
-    #
 
-    #
-    await bot.loop.run_in_executor(None, generer_article_veille)
-    await channel.send(f"{datetime_Monitoring} Le script `generer_article_veille` a terminé son exécution.")
-    #
-   
-    #
+
+
     await bot.loop.run_in_executor(None, setup)
-    await channel.send(f"{datetime_Monitoring} Le script `setup` a terminé son exécution.")
-    #
-       
-    #
-    await bot.loop.run_in_executor(None, création_mot_video)
-    await channel.send(f"{datetime_Monitoring} Le script `création_mot_video` a terminé son exécution.")
-    #
-    
-    #
-    await bot.loop.run_in_executor(None, creation_script_video)
-    await channel.send(f"{datetime_Monitoring} Le script `creation_script_video` a terminé son exécution.")
-    #     
+    await channel.send(f"{datetime_Monitoring} 1")
 
-    #
-    await bot.loop.run_in_executor(None, recuperation_videos)
-    await channel.send(f"{datetime_Monitoring} Le script `recuperation_videos` a terminé son exécution.")
-    #    
-    #
-    await bot.loop.run_in_executor(None, voice_videos)
-    await channel.send(f"{datetime_Monitoring} Le script `voice_videos` a terminé son exécution.")
-    #      
-    #
-    await bot.loop.run_in_executor(None, ajustement_rush)
-    await channel.send(f"{datetime_Monitoring} Le script `ajustement_rush` a terminé son exécution.")
-    #     
-    #
-    await bot.loop.run_in_executor(None, assamblage_rush)
-    await channel.send(f"{datetime_Monitoring} Le script `assamblage_rush` a terminé son exécution.")
-    #    
-    #
-    await bot.loop.run_in_executor(None, crated_subtitle)
-    await channel.send(f"{datetime_Monitoring} Le script `crated_subtitle` a terminé son exécution.")
-    #
-    #
-    await bot.loop.run_in_executor(None, assamblage_sous_titre_rush)
-    await channel.send(f"{datetime_Monitoring} Le script  `assamblage_sous_titre_rush` a terminé son exécution.")
-    #          
+    await bot.loop.run_in_executor(None, recovery)
+    await channel.send(f"{datetime_Monitoring} 2")
+
+
+    await bot.loop.run_in_executor(None, generer_article)
+    await channel.send(f"{datetime_Monitoring} 3")
+
+
+    await bot.loop.run_in_executor(None, generer_video)
+    await channel.send(f"{datetime_Monitoring} 4")
+
+
+
+
 
     conn = connect_db()
     c = conn.cursor()

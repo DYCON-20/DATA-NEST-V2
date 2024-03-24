@@ -1,11 +1,11 @@
 import sys
 from pathlib import Path
 sys.path.append(str(Path(__file__).parent.parent))
-from setting import client
-from setting import LANGUAGE
+from Setting.setting import  client
+from Setting.setting import  LANGUAGE
 
 from datetime import datetime, timedelta
-from setting import connect_db
+from Setting.setting import  connect_db
 conn = connect_db()
 
 

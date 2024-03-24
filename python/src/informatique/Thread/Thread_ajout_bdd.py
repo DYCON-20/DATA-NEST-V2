@@ -4,7 +4,7 @@ sys.path.append(str(Path(__file__).parent.parent))
 import mysql.connector
 from datetime import datetime
 from urllib.parse import quote
-from setting import connect_db
+from  Setting.setting  import connect_db
 def recuperationbdd(donnees_a_inserer):
 
     try:

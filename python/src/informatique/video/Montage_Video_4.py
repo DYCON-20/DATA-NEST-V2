@@ -10,14 +10,14 @@ from moviepy.editor import VideoFileClip, AudioFileClip
 import requests
 from moviepy.editor import VideoFileClip, AudioFileClip
 from moviepy.editor import VideoFileClip, AudioFileClip, TextClip, CompositeVideoClip
-from setting import AssemblyAI  
+from Setting.setting import  AssemblyAI  
 
 from moviepy.editor import VideoFileClip, concatenate_videoclips, AudioFileClip, concatenate_audioclips
-from setting import AssemblyAI
+from Setting.setting import  AssemblyAI
 import assemblyai as aai
 from moviepy.editor import VideoFileClip, AudioFileClip, CompositeAudioClip
 
-from setting import Theme
+from Setting.setting import  Theme
 
 
 datetime_Monitoring = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')

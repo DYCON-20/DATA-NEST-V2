@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 from moviepy.editor import VideoFileClip, concatenate_videoclips, AudioFileClip, concatenate_audioclips, ImageClip, CompositeVideoClip
 
 sys.path.append(str(Path(__file__).parent.parent))
-from setting import Theme
+from Setting.setting import  Theme
 
 datetime_Monitoring = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
 

@@ -8,16 +8,16 @@ import requests
 from playsound import playsound
 from datetime import datetime, timedelta
 
-from setting import TIKTOK_id
+from Setting.setting import  TIKTOK_id
 from pydub import AudioSegment
 import requests
 import base64
 import os
 from playsound import playsound
-from setting import TEXTE_INTRO, TEXTE_OUTRO
+from Setting.setting import  TEXTE_INTRO, TEXTE_OUTRO
 
 
-from setting import Theme
+from Setting.setting import  Theme
 
 
 datetime_Monitoring = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
@@ -27,7 +27,7 @@ def voice_videos():
     print("🟦 Create voice recording [ B{6/10} ]🟦")
 
     # Assuming setting.py contains the necessary database connection parameters
-    from setting import connect_db
+    from Setting.setting import  connect_db
     from datetime import datetime, timedelta
 
     # Connect to the database

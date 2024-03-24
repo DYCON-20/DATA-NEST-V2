@@ -1,13 +1,13 @@
 import sys
 from pathlib import Path
 sys.path.append(str(Path(__file__).parent.parent))
-from setting import client
+from Setting.setting import  client
 from datetime import datetime, timedelta
-from setting import connect_db  
+from Setting.setting import  connect_db  
 import os
-from setting import LANGUAGE
+from Setting.setting import  LANGUAGE
 
-from setting import Theme
+from Setting.setting import  Theme
 
 
 datetime_Monitoring = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
@@ -17,7 +17,7 @@ def creation_script_video():
   print("🟦 Create the 5 scripts for the video [ B{4/10} ]🟦")
 
 
-  from setting import connect_db
+  from Setting.setting import  connect_db
 
   conn = connect_db()
   c = conn.cursor()
@@ -41,7 +41,7 @@ def creation_script_video():
 
 Analyze the text and Generate a script for a video, in {LANGUAGE} based on the source to create the text of a video In this format I don't have them
 it is very important that it does not exceed 180 characters
-
+it is very important that it does not exceed 180 characters
 
 
   The script should be returned as a string with the specified number of paragraphs.
@@ -56,18 +56,20 @@ it is very important that it does not exceed 180 characters
                  YOU MUST NOT INCLUDE ANY TYPE OF MARKDOWN OR FORMATTING IN THE SCRIPT, NEVER USE A TITLE Or @ or link
                  RETURN ONLY THE RAW SCRIPT CONTENT. DO NOT INCLUDE “VOICE OVER,” “NARRATOR,” OR SIMILAR INDICATORS OF WHAT SHOULD BE SPOKEN AT THE BEGINNING OF EACH PARAGRAPH OR LINE. YOU MUST NOT MENTION THE PROMPT OR ANYTHING ABOUT THE SCRIPT ITSELF. ALSO, NEVER TALK ABOUT THE NUMBER OF PARAGRAPHS OR LINES. JUST WRITE THE SCRIPT.
 
-            
+it is very important that it does not exceed 180 characters
+it is very important that it does not exceed 180 characters
+ 
 
 """
 
 
   response = client.chat.completions.create(
-    model="gpt-3.5-turbo", 
+    model="gpt-4", 
     messages=[
       {"role": "system", "content": instruction},
       {"role": "user", "content": data1}
     ],
-    max_tokens=50, 
+    max_tokens=200, 
     temperature=0,
     top_p=1, 
     frequency_penalty=0,
@@ -83,7 +85,7 @@ it is very important that it does not exceed 180 characters
       {"role": "system", "content": instruction},
       {"role": "user", "content": data2}
     ],
-    max_tokens=50, 
+    max_tokens=200, 
     temperature=0,
     top_p=1, 
     frequency_penalty=0,
@@ -100,7 +102,7 @@ it is very important that it does not exceed 180 characters
       {"role": "system", "content": instruction},
       {"role": "user", "content": data3}
     ],
-    max_tokens=50, 
+    max_tokens=200, 
     temperature=0,
     top_p=1, 
     frequency_penalty=0,
@@ -116,7 +118,7 @@ it is very important that it does not exceed 180 characters
       {"role": "system", "content": instruction},
       {"role": "user", "content": data4}
     ],
-    max_tokens=50, 
+    max_tokens=200, 
     temperature=0,
     top_p=1,
     frequency_penalty=0,
@@ -132,7 +134,7 @@ it is very important that it does not exceed 180 characters
       {"role": "system", "content": instruction},
       {"role": "user", "content": data5}
     ],
-    max_tokens=50, 
+    max_tokens=200, 
     temperature=0,
     top_p=1, 
     frequency_penalty=0,

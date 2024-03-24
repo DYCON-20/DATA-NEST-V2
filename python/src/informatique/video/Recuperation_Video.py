@@ -6,11 +6,12 @@ from datetime import datetime, timedelta
 from pathlib import Path
 import sys
 sys.path.append(str(Path(__file__).parent.parent))
-from setting import API_KEY, connect_db, Theme
+from Setting.setting import  API_KEY, connect_db, Theme
 
 datetime_Monitoring = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
 
 def recuperation_videos():
+    
     print("-")
     print("🟦 Thanks to the keyword recover the videos [ B{5/10} ]🟦")
 
@@ -66,7 +67,7 @@ def recuperation_videos():
     c = conn.cursor()
     date_du_jour_avant = datetime_Monitoring
 
-    c.execute('SELECT mots_clée_1, mots_clée_2, mots_clée_3, mots_clée_4, mots_clée_5 FROM Video_mots WHERE date = %s', (date_du_jour_avant,))
+    c.execute('SELECT mots_clee_1, mots_clee_2, mots_clee_3, mots_clee_4, mots_clee_5 FROM Video_mots WHERE date = %s', (date_du_jour_avant,))
     resultat = c.fetchone()
 
     if resultat:

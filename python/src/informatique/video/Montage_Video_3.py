@@ -3,9 +3,9 @@ from pathlib import Path
 sys.path.append(str(Path(__file__).parent.parent))
 import random
 from datetime import datetime, timedelta
-from setting import AssemblyAI
+from Setting.setting import  AssemblyAI
 import assemblyai as aai
-from setting import Theme
+from Setting.setting import  Theme
 datetime_Monitoring = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
 
 

@@ -1,13 +1,13 @@
 import sys
 from pathlib import Path
 sys.path.append(str(Path(__file__).parent.parent))
-from setting import client
+from Setting.setting import  client
 from datetime import datetime, timedelta
-from setting import connect_db  
+from Setting.setting import  connect_db  
 
-from source import Source
+from Setting.source import Source
 
-from setting import connect_db
+from Setting.setting import  connect_db
 
 def création_mot_video():
   print("-")
@@ -53,7 +53,7 @@ def création_mot_video():
       presence_penalty=0.0
     )
 
-  mots_clée_1 = str(response.choices[0].message.content)
+  mots_clee_1 = str(response.choices[0].message.content)
 
   response = client.chat.completions.create(model="gpt-3.5-turbo", 
   messages=[
@@ -66,7 +66,7 @@ def création_mot_video():
       presence_penalty=0.0
     )
 
-  mots_clée_2 = str(response.choices[0].message.content)
+  mots_clee_2 = str(response.choices[0].message.content)
 
 
   response = client.chat.completions.create(model="gpt-3.5-turbo", 
@@ -80,7 +80,7 @@ def création_mot_video():
       presence_penalty=0.0
     )
 
-  mots_clée_3 = str(response.choices[0].message.content)
+  mots_clee_3 = str(response.choices[0].message.content)
 
   response = client.chat.completions.create(model="gpt-3.5-turbo", 
   messages=[
@@ -93,7 +93,7 @@ def création_mot_video():
       presence_penalty=0.0
     )
 
-  mots_clée_4 = str(response.choices[0].message.content)
+  mots_clee_4 = str(response.choices[0].message.content)
 
   response = client.chat.completions.create(model="gpt-3.5-turbo", 
   messages=[
@@ -106,7 +106,7 @@ def création_mot_video():
       presence_penalty=0.0
     )
 
-  mots_clée_5 = str(response.choices[0].message.content)
+  mots_clee_5 = str(response.choices[0].message.content)
 
 
 
@@ -121,11 +121,11 @@ def création_mot_video():
   CREATE TABLE IF NOT EXISTS Video_mots (
       id INT AUTO_INCREMENT PRIMARY KEY,
       date VARCHAR(10),
-      mots_clée_1 TEXT,
-      mots_clée_2 TEXT,
-      mots_clée_3 TEXT,
-      mots_clée_4 TEXT,
-      mots_clée_5 TEXT
+      mots_clee_1 TEXT,
+      mots_clee_2 TEXT,
+      mots_clee_3 TEXT,
+      mots_clee_4 TEXT,
+      mots_clee_5 TEXT
       )
   ''')
   c = conn.cursor()
@@ -139,7 +139,7 @@ def création_mot_video():
   c.execute('SELECT * FROM Video_mots WHERE date = %s', (date_du_jour_avant,))
   if c.fetchone() is None:
       # Insère les données dans la base de données si aucun enregistrement n'existe pour cette date
-      c.execute('INSERT INTO Video_mots (date, mots_clée_1, mots_clée_2, mots_clée_3, mots_clée_4, mots_clée_5) VALUES (%s, %s, %s, %s, %s, %s)', (date_du_jour_avant, mots_clée_1, mots_clée_2, mots_clée_3, mots_clée_4, mots_clée_5))
+      c.execute('INSERT INTO Video_mots (date, mots_clee_1, mots_clee_2, mots_clee_3, mots_clee_4, mots_clee_5) VALUES (%s, %s, %s, %s, %s, %s)', (date_du_jour_avant, mots_clee_1, mots_clee_2, mots_clee_3, mots_clee_4, mots_clee_5))
       conn.commit()
       print("🟩Record added successfully.🟩")
   else:
