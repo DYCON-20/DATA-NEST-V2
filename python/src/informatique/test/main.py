@@ -12,18 +12,18 @@ from video.setup_video import  setup
 
 
 from video.Chat_GPT_Video_filtre import  creation_filtre_video
-from video.Chat_GPT_Video_mot import  création_mot_video
-from video.Chat_GPT_Video_Script import creation_script_video 
+from python.src.informatique.video.creation_word_video import  création_mot_video
+from python.src.informatique.video.Creation_script_video import creation_script_video 
 
 from video.Recuperation_Video import  recuperation_videos
 
 
 from video.Voice_script import  voice_videos
 
-from video.Montage_Video_1 import  ajustement_rush
-from video.Montage_Video_2 import  assamblage_rush
-from video.Montage_Video_3 import  crated_subtitle
-from video.Montage_Video_4 import  assamblage_sous_titre_rush
+from python.src.informatique.video.rush_adjustment import  ajustement_rush
+from python.src.informatique.video.Rush_assembly import  assamblage_rush
+from python.src.informatique.video.Rubtitle_creation import  crated_subtitle
+from python.src.informatique.video.assembly_under_rush_title import  assamblage_sous_titre_rush
 
 def retry(func, max_attempts=5, error_message="Erreur lors de la récupération"):
     attempt = 0

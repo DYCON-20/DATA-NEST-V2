@@ -1,0 +1,56 @@
+1
+00:00:00,248 --> 00:00:03,533
+Bonjour à tous, bienvenue sur cette Veille Informatique 5 nouvelles en
+
+2
+00:00:03,543 --> 00:00:06,877
+1 minute. Gurman révèle qu'iOS
+
+3
+00:00:06,887 --> 00:00:10,062
+18 présentera un nouvel écran d'accueil plus personnalisable dans la
+
+4
+00:00:10,102 --> 00:00:13,106
+plus grande mise à jour iPhone jamais réalisée.
+
+5
+00:00:13,166 --> 00:00:16,731
+Apple va bientôt sortir un nouvel iPad Air. Découvrez 4 choses à
+
+6
+00:00:16,811 --> 00:00:20,553
+anticiper. Apple's CQC has shown the
+
+7
+00:00:20,633 --> 00:00:23,655
+OS 17.4 RS Concern about CQEGT Vulnerability,
+
+8
+00:00:23,735 --> 00:00:27,837
+users left wondering about the fixed and potential disks.
+
+9
+00:00:27,997 --> 00:00:31,319
+Un étudiant en informatique a commis cette erreur surprenante.
+
+10
+00:00:31,359 --> 00:00:34,000
+La réalité dépasse parfois la fiction.
+
+11
+00:00:34,020 --> 00:00:37,582
+Découvrez Arduino Nanomated pour connecter votre projet domotique
+
+12
+00:00:37,602 --> 00:00:41,184
+à Google Home, Amazon Alexa, Apple HomeKit et Home Assistant
+
+13
+00:00:41,224 --> 00:00:44,145
+en quelques minutes. Consultez notre tutoriel dès maintenant.
+
+14
+00:00:44,986 --> 00:00:47,047
+C'est la fin. Rendez-vous demain pour une nouvelle veille.
+

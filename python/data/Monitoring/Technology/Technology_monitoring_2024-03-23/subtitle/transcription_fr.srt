@@ -1,60 +1,64 @@
 1
-00:00:00,248 --> 00:00:03,720
-Bonjour à tous, bienvenue sur cette Veille Informatique 5 nouvelles en 1
+00:00:00,248 --> 00:00:03,531
+Bonjour à tous, bienvenue sur cette Veille Informatique 5 nouvelles en
 
 2
-00:00:03,730 --> 00:00:07,512
-minute. Des randonneurs bloqués en haute montagne à cause du mauvais
+00:00:03,551 --> 00:00:06,654
+une minute. Des randonneurs bloqués en haute montagne
 
 3
-00:00:07,552 --> 00:00:12,135
-temps sauvés en 24 heures grâce à SOS via satellite pour iPhone.
+00:00:06,674 --> 00:00:10,037
+ont été sauvés grâce à SOS via satellite pour iPhone.
 
 4
-00:00:12,175 --> 00:00:15,276
-Découvrez le dernier membre de la famille Arduino Nano,
+00:00:10,057 --> 00:00:13,380
+Mauvais temps et altitude n'ont pas empêché le sauvetage.
 
 5
-00:00:15,316 --> 00:00:19,539
-le Nano Maté, basé sur un cœur Cortex-M33 de silicon Naben
+00:00:13,420 --> 00:00:17,123
+Ready Lance, un nouveau format publicitaire, les annonces fit tirer forme
 
 6
-00:00:19,579 --> 00:00:23,180
-GM240S. Parfait pour développer rapidement des
+00:00:17,183 --> 00:00:19,465
+pour maximiser l'engagement des annonceurs.
 
 7
-00:00:23,221 --> 00:00:26,542
-applications domotiques avec le protocole Maté. Ready à
+00:00:19,505 --> 00:00:23,469
+Cependant, ces annonces ressemblant à des publications régulières pourraient
 
 8
-00:00:26,603 --> 00:00:30,045
-lancer un nouveau format publicitaire, les annonces furent tirées forme
+00:00:23,489 --> 00:00:27,036
+ne pas plaire aux utilisateurs. Découvrez le dernier membre de
 
 9
-00:00:30,085 --> 00:00:33,548
-pour maximiser l'engagement des utilisateurs. Cependant,
+00:00:27,056 --> 00:00:30,437
+la famille Arduino Nano, le Nano Maté, basé sur un
 
 10
-00:00:33,568 --> 00:00:36,871
-ces annonces ressemblant à des publications régulières pourraient ne pas plaire à
+00:00:30,477 --> 00:00:34,099
+cœur Cortex M33 de Silicon Lab idéal pour les applications
 
 11
-00:00:36,931 --> 00:00:40,073
-tous. Votre espace de stockage est saturé,
+00:00:34,159 --> 00:00:37,400
+domotiques avec le protocole Maté. Avez-vous besoin
 
 12
-00:00:40,113 --> 00:00:44,807
-découvrez des astuces pour libérer de l'espace sur votre ordinateur Windows 11.
+00:00:37,440 --> 00:00:41,382
+de plus d'espace de stockage sur votre ordinateur ? Découvrez des conseils utiles
 
 13
-00:00:44,817 --> 00:00:48,079
-Dans le monde du développement, une simple erreur dans une demande de
+00:00:41,442 --> 00:00:45,223
+pour libérer de l'espace avec Windows 11. Dans le monde de la
 
 14
-00:00:48,119 --> 00:00:51,812
-tirage peut tout changer. Cela vous est-il déjà arrivé ?
+00:00:45,263 --> 00:00:48,905
+programmation, il y a ce moment où le pool JQuest tourne mal.
 
 15
-00:00:51,822 --> 00:00:53,864
-C'est la fin, rendez-vous demain pour une nouvelle veille.
+00:00:48,925 --> 00:00:52,546
+C'est une situation que de nombreux développeurs ont déjà vécue.
+
+16
+00:00:52,586 --> 00:00:54,607
+C'est la fin. Rendez-vous demain pour une nouvelle veille.
 
