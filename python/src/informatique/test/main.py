@@ -22,7 +22,7 @@ from video.Voice_script import  voice_videos
 
 from python.src.informatique.video.rush_adjustment import  ajustement_rush
 from python.src.informatique.video.Rush_assembly import  assamblage_rush
-from python.src.informatique.video.Rubtitle_creation import  crated_subtitle
+from python.src.informatique.video.Subtitle_creation import  crated_subtitle
 from python.src.informatique.video.assembly_under_rush_title import  assamblage_sous_titre_rush
 
 def retry(func, max_attempts=5, error_message="Erreur lors de la récupération"):

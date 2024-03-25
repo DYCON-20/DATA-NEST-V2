@@ -1,1 +1,0 @@
-Une nouvelle fonctionnalité sur Threads : Nous avançons vers notre objectif d'intégration avec le fediverse. Le fediverse est un réseau social mondial, ouvert et décentralisé.

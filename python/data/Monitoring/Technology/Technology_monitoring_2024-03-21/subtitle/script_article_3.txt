@@ -1,1 +1,0 @@
-Nous sommes ravis d'annoncer que GitHub Copilot dans la CLI est désormais disponible pour tous nos clients Copilot Individuels, Professionnels et Entreprise.

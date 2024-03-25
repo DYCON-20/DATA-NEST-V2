@@ -6,7 +6,7 @@ from video.Voice_script import  voice_videos
 
 from video.Rush_adjustment import  rush_adjustment
 from video.Rush_assembly import  rush_assembly
-from video.Rubtitle_creation import  subtitle_creation
+from video.Subtitle_creation import  subtitle_creation
 from video.Assembly_under_rush_title import  assembly_under_rush_title
 from video.Creation_word_video import  creation_word_video
 from video.Creation_script_video import creation_script_video 

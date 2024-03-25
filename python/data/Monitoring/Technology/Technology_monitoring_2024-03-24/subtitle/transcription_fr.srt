@@ -1,56 +1,64 @@
 1
-00:00:00,248 --> 00:00:03,533
-Bonjour à tous, bienvenue sur cette Veille Informatique 5 nouvelles en
+00:00:00,250 --> 00:00:04,030
+Bonjour, atus Bunven Wesser set vale informatic five
 
 2
-00:00:03,543 --> 00:00:06,877
-1 minute. Gurman révèle qu'iOS
+00:00:04,100 --> 00:00:08,154
+new Veil M 1 minute get ready for a major iPhone
 
 3
-00:00:06,887 --> 00:00:10,062
-18 présentera un nouvel écran d'accueil plus personnalisable dans la
+00:00:08,202 --> 00:00:12,474
+update. IOS 18 is set to feature a more customizable
 
 4
-00:00:10,102 --> 00:00:13,106
-plus grande mise à jour iPhone jamais réalisée.
+00:00:12,522 --> 00:00:16,634
+home screen. This is part of Apple's biggest iOS update
 
 5
-00:00:13,166 --> 00:00:16,731
-Apple va bientôt sortir un nouvel iPad Air. Découvrez 4 choses à
+00:00:16,682 --> 00:00:20,346
+ever. A new iPad air is on the horizon.
 
 6
-00:00:16,811 --> 00:00:20,553
-anticiper. Apple's CQC has shown the
+00:00:20,458 --> 00:00:23,630
+Let's dive into for anticipated features.
 
 7
-00:00:20,633 --> 00:00:23,655
-OS 17.4 RS Concern about CQEGT Vulnerability,
+00:00:24,050 --> 00:00:28,198
+Apple's C Chrissy around iOS 17 four
 
 8
-00:00:23,735 --> 00:00:27,837
-users left wondering about the fixed and potential disks.
+00:00:28,284 --> 00:00:32,418
+one raises concerns about security vulnerabilities.
 
 9
-00:00:27,997 --> 00:00:31,319
-Un étudiant en informatique a commis cette erreur surprenante.
+00:00:32,594 --> 00:00:36,502
+Users are left wondering about the potential risks and
 
 10
-00:00:31,359 --> 00:00:34,000
-La réalité dépasse parfois la fiction.
+00:00:36,556 --> 00:00:40,454
+fixes. A computer science major made
 
 11
-00:00:34,020 --> 00:00:37,582
-Découvrez Arduino Nanomated pour connecter votre projet domotique
+00:00:40,492 --> 00:00:43,190
+a mistake that seems stranger than men's.
 
 12
-00:00:37,602 --> 00:00:41,184
-à Google Home, Amazon Alexa, Apple HomeKit et Home Assistant
+00:00:43,690 --> 00:00:47,282
+Introducing Arduino Nanomatter, the latest
 
 13
-00:00:41,224 --> 00:00:44,145
-en quelques minutes. Consultez notre tutoriel dès maintenant.
+00:00:47,346 --> 00:00:51,262
+addition to the smart home ecosystem. Seamlessly connect
 
 14
-00:00:44,986 --> 00:00:47,047
-C'est la fin. Rendez-vous demain pour une nouvelle veille.
+00:00:51,316 --> 00:00:54,106
+with Google Home, Amazon Alexa,
+
+15
+00:00:54,218 --> 00:00:57,854
+Apple Homekit, and home assistant. Learn how
+
+16
+00:00:57,892 --> 00:01:01,450
+in our tutorial say lo fin rendezvous.
 
