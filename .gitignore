@@ -1,6 +1,8 @@
 # Ignorer un fichier spécifique
 secrets.txt
 setting.py
+.DS_Store
+
 # Ignorer tous les fichiers ayant une extension spécifique
 *.log
 # Ignorer tous les fichiers dans un dossier spécifique (et ses sous-dossiers)
