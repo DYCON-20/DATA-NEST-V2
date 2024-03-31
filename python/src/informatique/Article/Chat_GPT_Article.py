@@ -84,28 +84,6 @@ def generer_article_veille():
         result_article = str(response.choices[0].message.content)
 
 
-        instruction_tokens = len(instruction.split())
-        result_article_tokens = len(result_article.split())
-
-
-
-        # Coûts pour 1M de tokens
-        input_cost_per_million = 30.00  # en dollars
-        output_cost_per_million = 60.00  # en dollars
-
-        # Calculer le coût par token
-        input_cost_per_token = input_cost_per_million / 1_000_000
-        output_cost_per_token = output_cost_per_million / 1_000_000
-
-        instruction_tokens = instruction_tokens * input_cost_per_token
-        result_article_tokens = result_article_tokens * output_cost_per_token
-
-        total_Priceus = instruction_tokens + result_article_tokens
-
-        cout_total_euros = rate * total_Priceus
-
-        cout_total_euros = round(cout_total_euros, 2)
-
         
         c = conn.cursor()
 
@@ -132,46 +110,20 @@ def generer_article_veille():
             print("🟧A record already exists for this date, no new records have been added.🟧")
 
     # Ferme la connexion à la base de données
-    # Close the database connection
-     
 
-        # Crée la table Article_Filtre si elle n'existe pas
-        # Creates the Article_Filter table if it does not exist
-        c.execute('''
-            CREATE TABLE IF NOT EXISTS Price (
-                id INT AUTO_INCREMENT PRIMARY KEY,
-                Price_resultat FLOAT,
-                date VARCHAR(10)
-            )
-        ''')
-
-
-      
-        # Insère les données dans la base de données si aucun enregistrement n'existe pour cette date
-        # Insert data into database if no records exist for this date
-        c.execute('INSERT INTO Price (Price_resultat, date) VALUES (%s, %s)', (cout_total_euros, date_du_jour))
-        conn.commit()
-        print("Price added successfully.🟩")
-       
     # Ferme la connexion à la base de données
     # Close the database connection
         conn.close()
 
 
-
-
-
-
-
-
-
-
-
-
-
-
     except Exception as e:
-            print(f"Une erreur est survenue : {e}")
+            print(f"""❌❌Une erreur est survenue ❌❌
+			The most common errors are 
+			-⚠️Does your API key work? 
+			-⚠️Is the connection to your database working correctly?  
+			➡️Here is the error message 🟨{e}🟨 """)
 
 
 
+
+generer_article_veille() 

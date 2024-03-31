@@ -1,0 +1,1 @@
+"OpenAI a développé un moteur vocal permettant d'uploader un échantillon vocal de 15 secondes pour générer une copie synthétique. Alors que les deepfakes se multiplient, OpenAI insiste sur le fait qu'elle développe cette technologie de manière responsable et teste comment le modèle est utilisé et abusé."

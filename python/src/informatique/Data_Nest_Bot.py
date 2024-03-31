@@ -22,10 +22,6 @@ from step.video_creation import  generer_video
 bot = commands.Bot(command_prefix='!')
 MODE_DEV = True
 
-
-
-
-
 # Exécutez cette fonction lorsque le bot est prêt
 # Définissez une vue contenant plusieurs boutons
 class MultipleScriptButtonView(View):
@@ -35,48 +31,6 @@ class MultipleScriptButtonView(View):
         self.script4_button_clicked = False  # Initialise l'état de clic du bouton 4 à False
         self.wait_and_execute = asyncio.create_task(self.wait_then_execute_script4())
 
-    @discord.ui.button(label="Régénérer le thread", style=discord.ButtonStyle.blurple)
-    async def script1_button_callback(self, button, interaction):
-        # Action pour le premier bouton
-        await self.channel.send(f"Régénérer le thread")
-        button.disabled = True
-        await interaction.response.edit_message(view=self)
-        
-    @discord.ui.button(label="Régénérer la vidéo", style=discord.ButtonStyle.blurple)
-    async def script2_button_callback(self, button, interaction):
-        # Action pour le second bouton
-        await self.channel.send(f"Le script 2 a été exécuté.")
-        button.disabled = True
-        await interaction.response.edit_message(view=self)
-
-    @discord.ui.button(label="Régénérer la vidéo", style=discord.ButtonStyle.blurple, custom_id="script3_button")
-    async def script3_button_callback(self, button, interaction):
-        # Action pour le troisième bouton
-        await self.channel.send(f"Le script 3 a été exécuté.")
-        button.disabled = True
-        await interaction.response.edit_message(view=self)
-
-    @discord.ui.button(label="Valider l'envoie", style=discord.ButtonStyle.red, custom_id="script4_button")
-    async def script4_button_callback(self, button, interaction):
-        self.script4_button_clicked = True
-        # Votre logique ici
-        self.message = interaction.message  # Stocke une référence au message
-        # Le reste de votre logique
-
-
-    async def wait_then_execute_script4(self):
-        await asyncio.sleep(5)  #  3600 pour une heure
-        if not self.script4_button_clicked:
-            # Exécute le script ici si le bouton n'a pas été cliqué
-            await self.channel.send(f"Le script 4 a été exécuté automatiquement après 1 heure.")
-            for item in self.children:
-                if item.custom_id == "script4_button":
-                    item.disabled = True
-            # Met à jour le message pour refléter l'état désactivé du bouton
-            if hasattr(self, 'message'):
-                await self.message.edit(view=self)
-
-    
 
 @bot.event
 async def on_ready():
@@ -119,8 +73,7 @@ async def envoyer_message():
     c.close()
     conn.close()   
 
-    MESSAGE = resultat[0]  # Supposons que 'resultat[0]' contienne votre message
-
+    MESSAGE = resultat[0]  
     if len(MESSAGE) <= 2000:
         await channel.send(MESSAGE)
     else:
@@ -135,8 +88,4 @@ async def envoyer_message():
     VIDEO_PATH = f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/{datetime_Monitoring}_{Theme}_monitoring_.mp4"
     await channel.send(file=discord.File(VIDEO_PATH))
 
-    view = MultipleScriptButtonView(channel)
-    await channel.send(f"Cliquez sur un des boutons pour exécuter un script.", view=view)
-
-    
 bot.run(DISCORD_KEY)

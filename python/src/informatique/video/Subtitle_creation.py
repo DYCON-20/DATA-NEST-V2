@@ -12,50 +12,55 @@ from Setting.setting import  LANGUAGE_Subtitle
 
 
 def subtitle_creation():
-    print("-")
-    print("🟦 Create the video subtitles [ B{9/10} ]🟦")
+    try:
+
+        print("-")
+        print("🟦 Create the video subtitles [ B{9/10} ]🟦")
 
 
-    nombre_aleatoire_entier = random.randint(1, 3)
-    nombre_aleatoire_entier
+        nombre_aleatoire_entier = random.randint(1, 3)
+        nombre_aleatoire_entier
 
-    date_du_jour_avant = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
-
-
-
-    from moviepy.editor import VideoFileClip, AudioFileClip
-
-    video_clip = VideoFileClip(f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/final_component/assembly.mp4")
-    audio_clip = AudioFileClip(f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/audio/Compilation_audio_finale.mp3")
-
-    # Assurez-vous que la durée de l'audio correspond à celle de la vidéo
-    video_clip = video_clip.set_audio(audio_clip)
-
-    video_clip.write_videofile(f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/final_component/audio_video_editing.mp4")
+        date_du_jour_avant = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
 
 
 
+        from moviepy.editor import VideoFileClip, AudioFileClip
+
+        video_clip = VideoFileClip(f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/final_component/assembly.mp4")
+        audio_clip = AudioFileClip(f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/audio/Compilation_audio_finale.mp3")
+
+        # Assurez-vous que la durée de l'audio correspond à celle de la vidéo
+        video_clip = video_clip.set_audio(audio_clip)
+
+        video_clip.write_videofile(f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/final_component/audio_video_editing.mp4")
 
 
-    aai.settings.api_key = AssemblyAI
 
-    audio_url = f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/audio/Compilation_audio_finale.mp3"
 
-    # Configurer la transcription pour le JAPONAIS
-    config = aai.TranscriptionConfig(language_code=LANGUAGE_Subtitle)
 
-    # Créer l'objet Transcriber avec la configuration spécifiée
-    transcriber = aai.Transcriber(config=config)
+        aai.settings.api_key = AssemblyAI
 
-    # Lancer la transcription
-    transcript = transcriber.transcribe(audio_url)
+        audio_url = f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/audio/Compilation_audio_finale.mp3"
 
-    # Imprimer le texte transcrit
+        # Configurer la transcription pour le JAPONAIS
+        config = aai.TranscriptionConfig(language_code=LANGUAGE_Subtitle)
 
-    srt = transcript.export_subtitles_srt()
+        # Créer l'objet Transcriber avec la configuration spécifiée
+        transcriber = aai.Transcriber(config=config)
 
-    # Sauvegarder le fichier SRT localement
-    with open(f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/subtitle/transcription_fr.srt", "w") as f:
-        f.write(srt)
+        # Lancer la transcription
+        transcript = transcriber.transcribe(audio_url)
 
-    pass
+        # Imprimer le texte transcrit
+
+        srt = transcript.export_subtitles_srt()
+
+        # Sauvegarder le fichier SRT localement
+        with open(f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/subtitle/transcription_fr.srt", "w") as f:
+            f.write(srt)
+
+        pass
+    except Exception as e:
+            print(f"""❌❌An error has occurred() ❌❌
+            ➡️Here is the error message 🟨{e}🟨 """)

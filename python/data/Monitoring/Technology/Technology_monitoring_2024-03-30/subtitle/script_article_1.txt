@@ -1,0 +1,1 @@
+"GitHub annonce la disponibilité générale de Copilot dans le CLI. Cette fonction offre des suggestions de commandes et des explications."

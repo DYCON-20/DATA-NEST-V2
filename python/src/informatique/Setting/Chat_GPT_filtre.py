@@ -9,6 +9,8 @@ conn = connect_db()
 import re
 def generer_filtre_veille():
     try:
+        print("-")
+        print(" 🟪 Create filtre  🟪 ")
 
         conn = connect_db()
         cursor = conn.cursor()
@@ -202,5 +204,10 @@ def generer_filtre_veille():
 
 
     except Exception as e:
-            print(f"Une erreur est survenue : {e}")
+            print(f"""❌❌An error has occurred ❌❌
+            The most common errors are 
+            -⚠️Does your API key work? 
+            -⚠️Is the connection to your database working correctly?  
+	        -⚠️check the return of the item
+            ➡️Here is the error message 🟨{e}🟨 """)
 
