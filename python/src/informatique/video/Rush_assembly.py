@@ -13,15 +13,13 @@ def ajuster_format_telephone(clip, resolution_cible=(1080, 1920)):
     ratio_clip = clip.size[0] / clip.size[1]
 
     if ratio_clip > ratio_cible:
-        # Le clip est trop large, il faut le rogner horizontalement
+     
         nouvelle_largeur = int(clip.size[1] * ratio_cible)
         clip_rogne = clip.crop(x_center=clip.size[0]/2, width=nouvelle_largeur)
     else:
-        # Le clip est trop haut, il faut le rogner verticalement (si nécessaire)
         nouvelle_hauteur = int(clip.size[0] / ratio_cible)
         clip_rogne = clip.crop(y_center=clip.size[1]/2, height=nouvelle_hauteur)
 
-    # Redimensionnement pour s'assurer que la résolution correspond à la cible
     clip_final = clip_rogne.resize(newsize=resolution_cible)
     return clip_final
 
@@ -39,7 +37,6 @@ def rush_assembly():
         base_pathv = f"{base_path}/final_component/"
         base_patha = f"{base_path}/audio/"
 
-        # Traitement de l'intro et de l'outro
         video_intro_clip = VideoFileClip(video_intro_path)
         video_intro_ajuste = ajuster_format_telephone(video_intro_clip, resolution)
         video_outro_clip = VideoFileClip(video_outro_path)
@@ -68,7 +65,7 @@ def rush_assembly():
         nom_fichier_sortie_video = f"{base_pathv}/assembly.mp4"
         clip_final.write_videofile(nom_fichier_sortie_video, codec=codec_video)
 
-        image_path = '/Applications/XAMPP/xamppfiles/htdocs/DATA-NEST-V2/python/data/Ressource/back.png'  # Chemin vers votre image
+        image_path = '/Applications/XAMPP/xamppfiles/htdocs/DATA-NEST-V2/python/data/Ressource/back.png'  
         image_clip = ImageClip(image_path).set_duration(clip_final.duration).resize(resolution)
         final_video_with_image = CompositeVideoClip([clip_final, image_clip])
         

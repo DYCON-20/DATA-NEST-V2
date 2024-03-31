@@ -18,7 +18,6 @@ def recuperation_videos():
 
         URL = 'https://pixabay.com/api/videos/'
         
-        # Définition d'une liste de mots-clés de secours
         mots_cles_secours = ['MacBook', 'technology', 'city', 'education', 'music']
 
         def telecharger_video(url, dossier_destination, nom_fichier):

@@ -17,22 +17,13 @@ def generer_filtre_veille():
         yesterday_date = datetime.now() - timedelta(1)
         yesterday_str = yesterday_date.strftime('%Y-%m-%d')
         
-        # Sélection et affichage des threads du jour d'avant
         cursor.execute("SELECT Content FROM Sources WHERE Date LIKE %s", (yesterday_str + '%',))
         Source = cursor.fetchall()
-
-
-
-
-
-
-       
 
         print(" 🟪🟦Filter the sources to keep the essentials for the article and also save them separately [ A{1/2} B{1/10} ]🟦🟪 ")
 
         data = Source
         data_converted = str(data)
-
 
         instruction = """Filtre et affiche par ordre du plus interresant au moin interresant  seulement les articles correspondant à ces critères : - Lié à l’informatique et à la technologie - Pas une pub (un podcast, une vidéo) - Nouveauté ou événement - Affiche les données avec cette template : User Texte Pas de lien
         la réponse doit être structurée comme :
@@ -65,8 +56,6 @@ def generer_filtre_veille():
         {Source}
         ....
         """
-
-
 
         response = client.chat.completions.create(model="gpt-4", 
         messages=[
@@ -111,10 +100,6 @@ def generer_filtre_veille():
         else:
             print("Un enregistrement existe déjà pour cette date, aucun nouvel enregistrement n'a été ajouté.")
 
-
-
-
-            
         articles = result_filtre.strip().split("\n\nArticle ")
         articles = [article.split(": \n\n", 1)[1] if ": \n\n" in article else article for article in articles]
         articles = [article.split("Source:")[0].strip() for article in articles]

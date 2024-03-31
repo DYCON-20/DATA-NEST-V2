@@ -15,27 +15,21 @@ def creation_word_video():
     print("-")
     print("🟦 filter and create keywords for videos [ B{3/10} ]🟦")
 
-    # Connect to the database
     conn = connect_db()
     c = conn.cursor()
 
-    # Calcul de la date d'hier au format YYYY-MM-DD
     date_du_jour_avant = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
 
-    # Exécution de la requête pour récupérer les données datées d'hier
     c.execute('SELECT Video_filtre1, Video_filtre2, Video_filtre3, Video_filtre4, Video_filtre5 FROM Video_filtre WHERE date = %s', (date_du_jour_avant,))
 
     resultat = c.fetchone()
 
     if resultat:
-        # Affectation des résultats à des variables
         data1, data2, data3, data4, data5 = resultat
 
-        # Affichage pour confirmer les valeurs
         print("Recup")
     else:
         print("Aucun résultat trouvé pour la date d'hier.")
-        # Si aucun résultat n'est trouvé, vous pourriez vouloir initialiser vos variables ici
         data1 = data2 = data3 = data4 = data5 = None
 
     conn = connect_db()
@@ -118,7 +112,6 @@ def creation_word_video():
 
     c = conn.cursor()
 
-    # Crée la table Article_Filtre si elle n'existe pas
     c.execute('''
     CREATE TABLE IF NOT EXISTS Video_mots (
         id INT AUTO_INCREMENT PRIMARY KEY,
@@ -133,21 +126,17 @@ def creation_word_video():
     c = conn.cursor()
 
 
-    # Calcul de la date d'hier au format YYYY-MM-DD
     date_du_jour_avant = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
 
 
-    # Vérifie si un enregistrement avec la date d'hier existe déjà
     c.execute('SELECT * FROM Video_mots WHERE date = %s', (date_du_jour_avant,))
     if c.fetchone() is None:
-        # Insère les données dans la base de données si aucun enregistrement n'existe pour cette date
         c.execute('INSERT INTO Video_mots (date, mots_clee_1, mots_clee_2, mots_clee_3, mots_clee_4, mots_clee_5) VALUES (%s, %s, %s, %s, %s, %s)', (date_du_jour_avant, mots_clee_1, mots_clee_2, mots_clee_3, mots_clee_4, mots_clee_5))
         conn.commit()
         print("🟩Record added successfully.🟩")
     else:
         print("🟧A record already exists for this date, no new records have been added.🟧")
 
-    # Ferme la connexion à la base de données
     conn.close()
   except Exception as e:
             print(f"""❌❌An error has occurred() ❌❌

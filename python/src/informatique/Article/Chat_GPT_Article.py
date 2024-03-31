@@ -122,8 +122,3 @@ def generer_article_veille():
 			-⚠️Does your API key work? 
 			-⚠️Is the connection to your database working correctly?  
 			➡️Here is the error message 🟨{e}🟨 """)
-
-
-
-
-generer_article_veille() 
