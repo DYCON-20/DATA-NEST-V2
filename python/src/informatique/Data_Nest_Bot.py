@@ -65,7 +65,7 @@ class MultipleScriptButtonView(View):
 
 
     async def wait_then_execute_script4(self):
-        await asyncio.sleep(5)  # Remplacez 5 par 3600 pour une heure
+        await asyncio.sleep(5)  #  3600 pour une heure
         if not self.script4_button_clicked:
             # Exécute le script ici si le bouton n'a pas été cliqué
             await self.channel.send(f"Le script 4 a été exécuté automatiquement après 1 heure.")
@@ -98,7 +98,7 @@ async def envoyer_message():
     channel = bot.get_channel(int(channel_id))
     datetime_Monitoring = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
 
-    #await bot.loop.run_in_executor(None, setup)
+    await bot.loop.run_in_executor(None, setup)
     await channel.send(f"{datetime_Monitoring} 1")
 
     await bot.loop.run_in_executor(None, recovery)

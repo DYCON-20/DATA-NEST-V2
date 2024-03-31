@@ -3,7 +3,7 @@ from pathlib import Path
 sys.path.append(str(Path(__file__).resolve().parent.parent))
 
 from Thread.Thread import recuperation 
-from Article.Chat_GPT_filtre import generer_filtre_veille 
+from python.src.informatique.Setting.Chat_GPT_filtre import generer_filtre_veille 
 
 
 from Article.Chat_GPT_Article import generer_article_veille 

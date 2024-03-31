@@ -266,24 +266,27 @@ def rush_adjustment():
         chemin_video = os.path.join(chemin_repertoire, video_aleatoire)
         print(f"Vidéo sélectionnée aléatoirement : {chemin_video}")
         
-        # Chargement des clips
+            # Chargement des clips
         clip_video = VideoFileClip(chemin_video)
         clip_audio = AudioFileClip(chemin_audio)
-        
+
         # Obtention des durées
         duree_video = clip_video.duration
         duree_audio = clip_audio.duration
-        
-        # Ajustement de la vidéo
-        if duree_video >= duree_audio:
-            debut_aleatoire = random.uniform(0, duree_video - duree_audio)
-            clip_video_ajuste = clip_video.subclip(debut_aleatoire, debut_aleatoire + duree_audio)
+
+        # Ajustement de la durée du clip vidéo pour correspondre à celle de l'audio
+        if duree_video > duree_audio:
+            # Coupe le clip vidéo si la vidéo est plus longue que l'audio
+            clip_video_ajuste = clip_video.subclip(0, duree_audio)
+        elif duree_video < duree_audio:
+            # Boucle la vidéo si la vidéo est plus courte que l'audio pour s'adapter à la durée de l'audio
+            clip_video_ajuste = clip_video.loop(duration=duree_audio)
         else:
-            # Optionnel : boucler la vidéo si plus courte que l'audio, puis couper
-            clip_video_boucle = clip_video.loop(duration=duree_audio)
-            debut_aleatoire = random.uniform(0, clip_video_boucle.duration - duree_audio)
-            clip_video_ajuste = clip_video_boucle.subclip(debut_aleatoire, debut_aleatoire + duree_audio)
-        
+            # La vidéo et l'audio ont déjà la même durée
+            clip_video_ajuste = clip_video
+
+        # Associer l'audio au clip vidéo ajusté pour s'assurer que l'audio et la vidéo sont synchronisés
+        clip_video_ajuste = clip_video_ajuste.set_audio(clip_audio)
         # Sauvegarde du clip vidéo ajusté
         chemin_sortie = f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/final_component/intro_finale.mp4"
         clip_video_ajuste.write_videofile(chemin_sortie)
@@ -305,27 +308,27 @@ def rush_adjustment():
     video_aleatoire = random.choice(videos) if videos else None
 
     if video_aleatoire:
-        chemin_video = os.path.join(chemin_repertoire, video_aleatoire)
-        print(f"Vidéo sélectionnée aléatoirement : {chemin_video}")
-        
-        # Chargement des clips
+           # Chargement des clips
         clip_video = VideoFileClip(chemin_video)
         clip_audio = AudioFileClip(chemin_audio)
-        
+
         # Obtention des durées
         duree_video = clip_video.duration
         duree_audio = clip_audio.duration
-        
-        # Ajustement de la vidéo
-        if duree_video >= duree_audio:
-            debut_aleatoire = random.uniform(0, duree_video - duree_audio)
-            clip_video_ajuste = clip_video.subclip(debut_aleatoire, debut_aleatoire + duree_audio)
+
+        # Ajustement de la durée du clip vidéo pour correspondre à celle de l'audio
+        if duree_video > duree_audio:
+            # Coupe le clip vidéo si la vidéo est plus longue que l'audio
+            clip_video_ajuste = clip_video.subclip(0, duree_audio)
+        elif duree_video < duree_audio:
+            # Boucle la vidéo si la vidéo est plus courte que l'audio pour s'adapter à la durée de l'audio
+            clip_video_ajuste = clip_video.loop(duration=duree_audio)
         else:
-            # Optionnel : boucler la vidéo si plus courte que l'audio, puis couper
-            clip_video_boucle = clip_video.loop(duration=duree_audio)
-            debut_aleatoire = random.uniform(0, clip_video_boucle.duration - duree_audio)
-            clip_video_ajuste = clip_video_boucle.subclip(debut_aleatoire, debut_aleatoire + duree_audio)
-        
+            # La vidéo et l'audio ont déjà la même durée
+            clip_video_ajuste = clip_video
+
+        # Associer l'audio au clip vidéo ajusté pour s'assurer que l'audio et la vidéo sont synchronisés
+        clip_video_ajuste = clip_video_ajuste.set_audio(clip_audio)
         # Sauvegarde du clip vidéo ajusté
         chemin_sortie =f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/final_component/outro_finale.mp4"
         clip_video_ajuste.write_videofile(chemin_sortie)

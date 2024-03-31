@@ -41,7 +41,7 @@ def subtitle_creation():
 
     audio_url = f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/audio/Compilation_audio_finale.mp3"
 
-    # Configurer la transcription pour le français
+    # Configurer la transcription pour le JAPONAIS
     config = aai.TranscriptionConfig(language_code=LANGUAGE_Subtitle)
 
     # Créer l'objet Transcriber avec la configuration spécifiée
@@ -59,4 +59,3 @@ def subtitle_creation():
         f.write(srt)
 
     pass
-  

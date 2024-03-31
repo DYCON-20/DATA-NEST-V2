@@ -80,7 +80,7 @@ it is very important that it does not exceed 180 characters
   script_article_1 = str(response.choices[0].message.content)
 
   response = client.chat.completions.create(
-    model="gpt-3.5-turbo", 
+    model="gpt-4", 
     messages=[
       {"role": "system", "content": instruction},
       {"role": "user", "content": data2}
@@ -97,7 +97,7 @@ it is very important that it does not exceed 180 characters
 
 
   response = client.chat.completions.create(
-    model="gpt-3.5-turbo", 
+    model="gpt-4", 
     messages=[
       {"role": "system", "content": instruction},
       {"role": "user", "content": data3}
@@ -113,7 +113,7 @@ it is very important that it does not exceed 180 characters
   script_article_3 = str(response.choices[0].message.content)
 
   response = client.chat.completions.create(
-    model="gpt-3.5-turbo", 
+    model="gpt-4", 
     messages=[
       {"role": "system", "content": instruction},
       {"role": "user", "content": data4}
@@ -129,7 +129,7 @@ it is very important that it does not exceed 180 characters
   script_article_4 = str(response.choices[0].message.content)
 
   response = client.chat.completions.create(
-    model="gpt-3.5-turbo",
+    model="gpt-4",
     messages=[
       {"role": "system", "content": instruction},
       {"role": "user", "content": data5}
@@ -200,3 +200,4 @@ it is very important that it does not exceed 180 characters
 
   print("4 text files were created in the specified folder with the specific content.")
 pass
+
