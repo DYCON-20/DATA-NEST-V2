@@ -206,7 +206,7 @@ def voice_videos():
 
 
         # Définissez vos variables ici
-        session_id = "0741b49e02bc59213d450c65e4430382"
+        session_id = TIKTOK_id
         text_speaker = LANGUAGE_VOICE
         filename = 'audio_article_2.mp3'
         req_text = f"{data2}"
@@ -295,7 +295,7 @@ def voice_videos():
 
 
         # Définissez vos variables ici
-        session_id = "0741b49e02bc59213d450c65e4430382"
+        session_id = TIKTOK_id
         text_speaker = LANGUAGE_VOICE
         filename = 'audio_article_3.mp3'
         req_text = f"{data3}"
@@ -378,7 +378,7 @@ def voice_videos():
 
 
         # Définissez vos variables ici
-        session_id = "0741b49e02bc59213d450c65e4430382"
+        session_id = TIKTOK_id
         text_speaker = LANGUAGE_VOICE
         filename = 'audio_article_4.mp3'
         req_text = f"{data4}"
@@ -453,7 +453,7 @@ def voice_videos():
 
 
         # Définissez vos variables ici
-        session_id = "0741b49e02bc59213d450c65e4430382"
+        session_id = TIKTOK_id
         text_speaker = LANGUAGE_VOICE
         filename = 'audio_article_5.mp3'
         req_text = f"{data5}"
@@ -585,7 +585,7 @@ def voice_videos():
 
 
     # Définissez vos variables ici
-        session_id = "0741b49e02bc59213d450c65e4430382"
+        session_id = TIKTOK_id
         text_speaker = LANGUAGE_VOICE
         filename = 'intro.mp3'
         req_text = TEXTE_INTRO
@@ -640,7 +640,7 @@ def voice_videos():
 
 
     # Définissez vos variables ici
-        session_id = "0741b49e02bc59213d450c65e4430382"
+        session_id = TIKTOK_id
         text_speaker = LANGUAGE_VOICE
         filename = 'outro.mp3'
         req_text = TEXTE_OUTRO

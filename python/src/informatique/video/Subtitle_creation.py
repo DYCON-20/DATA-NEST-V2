@@ -29,10 +29,7 @@ def subtitle_creation():
 
         video_clip = VideoFileClip(f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/final_component/assembly.mp4")
         audio_clip = AudioFileClip(f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/audio/Compilation_audio_finale.mp3")
-
-        # Assurez-vous que la durée de l'audio correspond à celle de la vidéo
         video_clip = video_clip.set_audio(audio_clip)
-
         video_clip.write_videofile(f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/final_component/audio_video_editing.mp4")
 
 
@@ -43,20 +40,15 @@ def subtitle_creation():
 
         audio_url = f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/audio/Compilation_audio_finale.mp3"
 
-        # Configurer la transcription pour le JAPONAIS
         config = aai.TranscriptionConfig(language_code=LANGUAGE_Subtitle)
 
-        # Créer l'objet Transcriber avec la configuration spécifiée
         transcriber = aai.Transcriber(config=config)
 
-        # Lancer la transcription
         transcript = transcriber.transcribe(audio_url)
 
-        # Imprimer le texte transcrit
 
         srt = transcript.export_subtitles_srt()
 
-        # Sauvegarder le fichier SRT localement
         with open(f"./python/data/Monitoring/{Theme}/{Theme}_monitoring_{datetime_Monitoring}/subtitle/transcription_fr.srt", "w") as f:
             f.write(srt)
 

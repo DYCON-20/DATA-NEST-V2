@@ -53,16 +53,12 @@ async def envoyer_message():
     datetime_Monitoring = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
 
     await bot.loop.run_in_executor(None, setup)
-    await channel.send(f"{datetime_Monitoring} 1")
 
     await bot.loop.run_in_executor(None, recovery)
-    await channel.send(f"{datetime_Monitoring} 2")
 
     await bot.loop.run_in_executor(None, generer_article)
-    await channel.send(f"{datetime_Monitoring} 3")
 
     await bot.loop.run_in_executor(None, generer_video)
-    await channel.send(f"{datetime_Monitoring} 4")
 
     conn = connect_db()
     c = conn.cursor()
